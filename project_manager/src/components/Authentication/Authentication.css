@@ -1,0 +1,29 @@
+/* AddEmployee.css */
+
+/* Center the form */
+.center-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust the height as needed */
+    
+  }
+  
+  /* Style the login button */
+  #login-btn {
+    background-color: darkblue;
+    color: white; /* Text color */
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Hover effect for .Rem-For class */
+  .Rem-For:hover {
+    color: red;
+  }
+  
+  /* Add any additional styling you need here */
+  

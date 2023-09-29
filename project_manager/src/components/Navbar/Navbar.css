@@ -1,0 +1,66 @@
+.custom-navbar {
+    padding: 15px 0;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  .active {
+    background-color: lightgrey;
+    border-radius: 5px;
+}
+
+  .logo {
+    max-width: 60px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .user-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-nav p {
+    margin-right: 20px;
+  }
+  
+  .user-nav button {
+    padding: 0;
+  }
+  
+  #avatar{
+    width: 55px;
+    height: 46px;
+  }
+  #logo-img {
+    width: 150px !important; 
+  }
+  
+  @media (max-width: 450px) {
+    
+    #title-text {
+      display: none;
+    }
+   
+  }
+  @media(max-width:992px){
+    #logout-btn {
+      width: 0%;
+      margin: 0% !important;
+      padding: 0%;
+    }
+    #welcome-txt{
+      display: none; 
+    }
+  }
+  

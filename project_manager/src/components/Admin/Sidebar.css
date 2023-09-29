@@ -1,0 +1,55 @@
+.sidebar {
+    color: black;
+    
+    height: 100%;
+    width: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: rgb(113, 110, 110);
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+  
+  }
+  
+  .sidebar ul li a:hover {
+    color: rgb(0, 0, 0);
+  }
+  
+  .sidebar ul li a.active-link {
+    font-weight: bold;
+    color: blue;
+  }
+  .active-link{
+    background-color: lightgrey;
+  border-radius: 5px;
+  }
+  
+  #user-text {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  @media (max-width: 767px) {
+    .sidebar {
+      min-height: 26vh !important;
+    }
+  }
+  
