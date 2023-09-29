@@ -37,6 +37,14 @@ const UnitHeadSidebar = () => {
             
           </NavLink>
         </li>
+        <li>
+          <NavLink  to="/settings" >
+          
+              <FontAwesomeIcon icon={faHome} />
+              Settings
+          
+          </NavLink>
+        </li>
       </ul>
     </div>
   );

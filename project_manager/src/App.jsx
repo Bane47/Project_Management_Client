@@ -37,6 +37,8 @@ import { UserContextProvider } from "./context/userContext";
 import TaskStatus from "./components/Team_Lead/TaskStatus";
 import Tasks from "./components/Employees/Tasks";
 import UpdateStatus from "./components/Employees/UpdateStatus";
+import Analytics from "./components/Admin/Analytics";
+import Settings from "./components/UnitHead/Settings";
 
 function App() {
   const [userRole,setUserRole]=useState(null);
@@ -77,6 +79,7 @@ function App() {
                 <Route path="/designation" element={<Designation />} />
                 <Route path="/dashboard" element={<AdminDashboard />} />
                 <Route path="/addemployee" element={<AddEmployee />} />
+                <Route path="/analytics" element={<Analytics />}/>
               </>
             )}
             {userRole === "01" && (
@@ -84,6 +87,7 @@ function App() {
                 <Route path="/dashboard" element={<UnitHeadDashboard />} />
                 <Route path="/assignproject" element={<AssignProject />} />
                 <Route path="/status" element={<Status />} />
+                <Route path="/settings" element={<Settings/>}/>
               </>
             )}
             {userRole === "02" && (

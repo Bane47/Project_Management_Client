@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../Assets/logo2.png";
 import "./Navbar.css";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,6 +20,19 @@ const NavBar = () => {
   }
 
   const navigate = useNavigate();
+
+  const [userdata, setUserData] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/getEmp-dataOne?email=${userEmail}`)
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userEmail]);
 
   const handleLogout = () => {
     axios
@@ -86,14 +99,24 @@ const NavBar = () => {
             Contact Us
           </Nav.Link>
         </Nav>
-        <Nav>
+        <Nav className="align-items-center">
           {userFound ? (
-            <button
-              className="btn btn-link nav-link me-5"
-              onClick={handleLogout}
-            >
-              <strong>Logout</strong>
-            </button>
+            <div className="d-flex align-items-center">
+              <img
+                src={`http://localhost:3001/images/${userdata.Profile}`}
+                className="rounded-circle mt-2 me-2 "
+                id="avatar"
+                alt="Avatar"
+                width="40"
+                height="40"
+              />
+              <button
+                className="btn btn-link nav-link p-3 text-danger"
+                onClick={handleLogout}
+              >
+                <strong>Logout</strong>
+              </button>
+            </div>
           ) : (
             <Nav.Link as={NavLink} to="/login" className="nav-link me-5">
               <strong>Login</strong>

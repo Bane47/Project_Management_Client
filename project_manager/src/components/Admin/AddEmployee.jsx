@@ -9,6 +9,7 @@ const AddEmployee = () => {
     SpecializedRole: "",
     Domain1: "",
     Domain2: "",
+    Gender: "",
     OtherDomains: "",
     Email: "",
     SkypeId: "",
@@ -24,6 +25,7 @@ const AddEmployee = () => {
     "Designer",
     "Tester",
   ];
+  const genderOptions = ["Male", "Female"];
 
   const domainOptions = [
     "OpenSource",
@@ -119,6 +121,7 @@ const AddEmployee = () => {
             Email: "",
             OtherDomains: "",
             SkypeId: "",
+            Gender:"",
             DesignationId: null, // Reset the DesignationId
           });
           setLoading(false);
@@ -194,6 +197,32 @@ const AddEmployee = () => {
                 <div className="invalid-feedback">{errors.Email}</div>
               )}
             </div>
+
+            <div className="mb-3">
+              <label htmlFor="Gender" className="form-label">
+                Gender*
+              </label>
+              <select
+                className={`form-select ${errors.Gender ? "is-invalid" : ""}`}
+                id="Gender"
+                name="Gender"
+                value={employeeData.Gender}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Select Gender</option>
+                {genderOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              {errors.Gender && (
+                <div className="invalid-feedback">{errors.Gender}</div>
+              )}
+            </div>
+
+            
             <div className="mb-3">
               <label htmlFor="Designation" className="form-label">
                 Designation*
