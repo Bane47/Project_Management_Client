@@ -12,8 +12,9 @@ const AddEmployee = () => {
     OtherDomains: "",
     Email: "",
     SkypeId: "",
-    DesignationId: null, // Initialize with null
+    DesignationId: null,
   });
+  const [loading, setLoading] = useState(false);
 
   const designationOptions = [
     "UnitHead",
@@ -87,12 +88,12 @@ const AddEmployee = () => {
       Designer: "05",
       Tester: "06",
     };
-  
+
     return designationIdMapping[selectedDesignation];
   };
-  
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
 
     if (validateForm()) {
@@ -108,7 +109,6 @@ const AddEmployee = () => {
       axios
         .post("http://localhost:3001/add-employee", updatedEmployeeData)
         .then((response) => {
-          console.log("Employee Data sent successfully:", response.data);
           setEmployeeData({
             EmployeeName: "",
             EmployeeId: "",
@@ -121,6 +121,7 @@ const AddEmployee = () => {
             SkypeId: "",
             DesignationId: null, // Reset the DesignationId
           });
+          setLoading(false);
         })
         .catch((error) => {
           console.error("Error sending employee data:", error);
@@ -267,7 +268,6 @@ const AddEmployee = () => {
                 name="Domain2"
                 value={employeeData.Domain2}
                 onChange={handleInputChange}
-          
               >
                 <option value="">Select Domain2</option>
                 {domainOptions.map((option) => (
@@ -307,8 +307,10 @@ const AddEmployee = () => {
               type="submit"
               className="btn btn-primary add-employeebtn"
               id="login-btn"
+              disabled={loading}
             >
-              Add Employee
+              {loading?"Adding...":"Add Employee"}
+              
             </button>
           </form>
         </div>
