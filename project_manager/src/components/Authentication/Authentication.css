@@ -25,5 +25,11 @@
     color: red;
   }
   
-  /* Add any additional styling you need here */
-  
+@media(max-width:575px){
+  #signin-card{
+    width: 80%;
+  }
+}
+#forget-pass{
+  height: 80vh;
+}

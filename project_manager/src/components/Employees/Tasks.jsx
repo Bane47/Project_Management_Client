@@ -8,12 +8,20 @@ const Tasks = () => {
   const userEmail = decoded.email;
 
   const [taskData, setTaskData] = useState([]);
+  const [currentTasks, setCurrentTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([]);
 
   useEffect(() => {
     axios
       .get(`http://localhost:3001/getTask-Data?userEmail=${userEmail}`)
       .then((res) => {
-        setTaskData(res.data.taskData);
+        const tasks = res.data.taskData;
+        setTaskData(tasks);
+        // Filter tasks based on the "deleted" status
+        const current = tasks.filter((task) => !task.deleted);
+        const completed = tasks.filter((task) => task.deleted);
+        setCurrentTasks(current);
+        setCompletedTasks(completed);
         console.log(res.data);
       })
       .catch((err) => {
@@ -26,25 +34,40 @@ const Tasks = () => {
       <h2>Tasks List</h2>
       <div className="container">
         <div className="row">
-          {taskData.map((task, index) => (
-            <div key={index} className="col-md-4 mb-4">
-              <div className="card">
+          <div className="col-md-6">
+            <h3>Current Tasks</h3>
+            {currentTasks.map((task, index) => (
+              <div key={index} className="card mb-4">
                 <div className="card-body">
                   <h5 className="card-title">{task.taskName}</h5>
                   <p className="card-text"><strong>Project Name:</strong> {task.projectName}</p>
                   <p className="card-text"><strong>Status:</strong> {task.status}</p>
                   <p className="card-text"><strong>Due Date:</strong> {new Date(task.dueDate).toLocaleDateString()}</p>
                   <p className="card-text"><strong>Team Lead Email:</strong> {task.TeamLeadEmail}</p>
-                  <p className="card-text"><strong>Task Name:</strong> {task.taskName}</p>
-                  <p className="card-text"><strong>Task Description:</strong> {task.taskDescription}</p>
+                  {/* Add other relevant task details here */}
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="col-md-6">
+            <h3>Completed Tasks</h3>
+            {completedTasks.map((task, index) => (
+              <div key={index} className="card mb-4">
+                <div className="card-body">
+                  <h5 className="card-title">{task.taskName}</h5>
+                  <p className="card-text"><strong>Project Name:</strong> {task.projectName}</p>
+                  <p className="card-text"><strong>Status:</strong> {task.status}</p>
+                  <p className="card-text"><strong>Due Date:</strong> {new Date(task.dueDate).toLocaleDateString()}</p>
+                  <p className="card-text"><strong>Team Lead Email:</strong> {task.TeamLeadEmail}</p>
+                  {/* Add other relevant task details here */}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
-};
+            }
 
 export default Tasks;

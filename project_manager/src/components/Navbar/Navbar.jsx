@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from "../Assets/logo2.png";
-import "./Navbar.css";
+import logo from "../Assets/logo-white.png";
 import axios from "axios";
-import jwt_decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -64,7 +63,7 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" expand="lg" className="justify-content-start">
       <ToastContainer
         position="top-center"
         autoClose={2000}
@@ -84,27 +83,34 @@ const NavBar = () => {
           </Navbar.Brand>
         </div>
       </Link>
-      <div className="p-2">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <div className="p-2 ms-auto">
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          variant="light"
+          style={{
+            backgroundColor: "white", // Change to your desired background color
+            borderColor: "white", // Change to your desired border color
+          }}
+        />
       </div>
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
-          <Nav.Link as={NavLink} to="/" className="nav-link">
+      <Navbar.Collapse id="basic-navbar-nav" bg="light">
+        <Nav className="me-auto ms-3">
+          <Nav.Link as={NavLink} to="/" className="nav-link text-white">
             Home
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/aboutus" className="nav-link">
+          <Nav.Link as={NavLink} to="/aboutus" className="nav-link text-white">
             About Us
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/contact" className="nav-link">
+          <Nav.Link as={NavLink} to="/contact" className="nav-link text-white">
             Contact Us
           </Nav.Link>
         </Nav>
-        <Nav className="align-items-center">
+        <Nav className="align-items-start ">
           {userFound ? (
             <div className="d-flex align-items-center">
               <img
                 src={`http://localhost:3001/images/${userdata.Profile}`}
-                className="rounded-circle mt-2 me-2 "
+                className="rounded-circle mt-2 me-2 ms-3 "
                 id="avatar"
                 alt="Avatar"
                 width="40"
@@ -118,7 +124,7 @@ const NavBar = () => {
               </button>
             </div>
           ) : (
-            <Nav.Link as={NavLink} to="/login" className="nav-link me-5">
+            <Nav.Link as={NavLink} to="/login" className="nav-link me-5 ms-3">
               <strong>Login</strong>
             </Nav.Link>
           )}

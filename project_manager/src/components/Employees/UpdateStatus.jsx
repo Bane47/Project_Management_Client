@@ -17,12 +17,14 @@ const UpdateStatus = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/getTask-Data?userEmail=${userEmail}`)
+      .get(`http://localhost:3001/getTask-Data?userEmail=${userEmail}&deleted=false`) // Add the deleted=false query parameter
       .then((res) => {
-        setTaskData(res.data.taskData);
+        // Filter out tasks where deleted is true
+        const filteredTaskData = res.data.taskData.filter((task) => !task.deleted);
+        setTaskData(filteredTaskData);
         const teamLeadEmailsObj = {};
-        res.data.taskData.forEach((task) => {
-          teamLeadEmailsObj[task._id] = task.TeamLeadEmail; // Store TeamLeadEmail for each task
+        filteredTaskData.forEach((task) => {
+          teamLeadEmailsObj[task._id] = task.TeamLeadEmail;
         });
         setTeamLeadEmails(teamLeadEmailsObj);
         console.log(res.data);
@@ -31,6 +33,7 @@ const UpdateStatus = () => {
         console.log(err);
       });
   }, [userEmail]);
+  
 
   const handleStatusChange = async (taskId, status) => {
     try {

@@ -90,8 +90,8 @@ const Login = () => {
 
   return (
     <div className="container">
-      <div className="row justify-content-center align-items-center vh-100">
-        <div className="card col-md-6 col-lg-4 p-5 rounded shadow">
+      <div className="row justify-content-center align-items-center" id="forget-pass">
+        <div className="card col-md-6 col-lg-4 p-5 rounded shadow" id="signin-card">
           <h2 className="mb-4 text-center">SignIn</h2>
           <ToastContainer
             position="top-center"
@@ -130,20 +130,21 @@ const Login = () => {
               />
             </div>
             <div className="mb-3 form-check">
-              <input
+              
+              <div className="row justify-content-start d-flex flex-row">
+                <div className="col-sm-6 col-12">
+                <input
                 type="checkbox"
                 className="form-check-input Rem-For"
                 id="rememberMe"
                 checked={rememberMe}
                 onChange={() => setRememberMe(!rememberMe)}
               />
-              <div className="row">
-                <div className="col-6">
                   <label className="form-check-label" htmlFor="rememberMe">
                     Remember Me
                   </label>
                 </div>
-                <div className="col-6">
+                <div className="col-sm-6 col-12">
                   <Link
                     to="/forgetpassword"
                     className="text-decoration-none Rem-For"

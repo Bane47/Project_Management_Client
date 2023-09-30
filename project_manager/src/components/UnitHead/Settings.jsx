@@ -23,16 +23,16 @@ const Settings = () => {
   }, [userEmail]);
 
   return (
-    <div className="user-profile container">
-      <h2>User Profile</h2>
+    <div className="user-profile container align-items-center d-flex flex-column mt-5">
+      <h2 className="text-center">User Profile</h2>
       {userData && (
-        <div className="profile-details row justify-content-center">
-          <div className="col-md-6 text-center">
+        <div className="profile-details vw-75 row justify-content-center align-items-center card d-flex flex-row p-md-5">
+          <div className="col-12 col-md-5 col-lg-4 text-center border border-1">
             <div className="profile-image-container">
-              <img src={`http://localhost:3001/images/${userData.Profile}`} alt="Profile" className="profile-image" />
+              <img src={`http://localhost:3001/images/${userData.Profile}`} alt="Profile" className="user-pro" />
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-12 col-md-5 col-lg-4">
             <div className="user-info mt-4">
               <p>
                 <strong>Employee Name:</strong> {userData.EmployeeName}

@@ -1,42 +1,41 @@
 /* AssignProject.css */
 
 .assign-project {
-    margin: 20px auto;
-    max-width: 900px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .assign-project h2 {
-    margin-bottom: 20px;
-  }
-  
-  .form-label {
-    font-weight: bold;
-  }
-  
-  .form-control {
-    margin-bottom: 15px;
-    width: 100%;
-  }
-  
-  .btn-primary {
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
+  margin: 20px auto;
+  max-width: 900px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 
-  /* Status.css */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.assign-project h2 {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.btn-primary {
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Status.css */
 .table-responsive {
   overflow-x: auto;
 }
@@ -66,50 +65,13 @@
   border-top: 2px solid #dee2e6;
 }
 
-
-/* UserProfile.css */
-
-/* Style the user profile container */
-.user-profile {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.user-pro {
+  width: 70%;
 }
 
-/* Style the profile image */
-.profile-image {
-  max-width: 150px;
-  height: auto;
-  border-radius: 50%;
-}
-
-/* Style user information */
-.user-info {
-  margin-top: 20px;
-}
-
-.user-info p {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-/* Style the header */
-.user-profile h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 10px;
-}
-
-/* Style the email link */
-.user-info a {
-  color: #007bff;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.user-info a:hover {
-  color: #0056b3;
+@media (max-width: 576px) {
+  .profile-details  {
+    width: 70% !important;
+    margin-bottom: 5em;
+  }
 }

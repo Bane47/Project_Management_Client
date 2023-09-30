@@ -1,10 +1,9 @@
 .sidebar {
-    color: black;
-    
-    height: 100%;
-    width: 90%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* min-height: 88.7vh; */
+    min-height: 100vh;
+    /* height: 100%; */
+    ;
+   
   }
   
   .sidebar h2 {
@@ -42,6 +41,9 @@
     background-color: lightgrey;
   border-radius: 5px;
   }
+  #side-main{
+    overflow: hidden !important;
+  }
   
   #user-text {
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -49,7 +51,8 @@
   }
   @media (max-width: 767px) {
     .sidebar {
-      min-height: 26vh !important;
+      min-height: 11vh !important;
+      min-width: 100vw;
+      padding: 1em 0;
     }
   }
-  

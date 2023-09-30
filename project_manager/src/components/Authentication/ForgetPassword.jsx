@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Authentication.css";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
@@ -24,8 +25,8 @@ const ForgetPassword = () => {
 
   return (
     <div className="container">
-      <div className="d-flex justify-content-center align-items-center vh-100">
-        <div className="col-md-4 col-lg-3 p-4 rounded shadow">
+      <div className="d-flex justify-content-center align-items-center " id="forget-pass">
+        <div className="col-md-5  p-4 rounded shadow">
           <h2 className="mb-4">Forgot Password</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">

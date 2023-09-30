@@ -17,7 +17,6 @@ import AdminSidebar from "./components/Admin/AdminSidebar";
 import PMSidebar from "./components/Project_Manager/PMSidebar";
 import PMDashboard from "./components/Project_Manager/PMDashboard";
 import Employees from "./components/Admin/Employees";
-import Designation from "./components/Admin/Designation";
 import TLDashboard from "./components/Team_Lead/TLDashboard";
 import TLSidebar from "./components/Team_Lead/TLSidebar";
 import EmployeeSidebar from "./components/Employees/EmployeeSidebar";
@@ -37,7 +36,6 @@ import { UserContextProvider } from "./context/userContext";
 import TaskStatus from "./components/Team_Lead/TaskStatus";
 import Tasks from "./components/Employees/Tasks";
 import UpdateStatus from "./components/Employees/UpdateStatus";
-import Analytics from "./components/Admin/Analytics";
 import Settings from "./components/UnitHead/Settings";
 
 function App() {
@@ -54,7 +52,7 @@ function App() {
   // Define a common layout for all user types
   const CommonLayout = (
     <div className="container-breakpoint overflow-hidden">
-      <div className="row">
+      <div className="row"  id="side-main">
         <div className="col-md-2">
           {userRole === "07" && <AdminSidebar />}
 
@@ -76,10 +74,8 @@ function App() {
             {userRole === "07" && (
               <>
                 <Route path="/employees" element={<Employees />} />
-                <Route path="/designation" element={<Designation />} />
                 <Route path="/dashboard" element={<AdminDashboard />} />
                 <Route path="/addemployee" element={<AddEmployee />} />
-                <Route path="/analytics" element={<Analytics />}/>
               </>
             )}
             {userRole === "01" && (

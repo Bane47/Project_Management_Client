@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddEmployee = () => {
   const [employeeData, setEmployeeData] = useState({
@@ -111,6 +113,16 @@ const AddEmployee = () => {
       axios
         .post("http://localhost:3001/add-employee", updatedEmployeeData)
         .then((response) => {
+          toast.success('Employee Added SuccessFully!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
           setEmployeeData({
             EmployeeName: "",
             EmployeeId: "",
@@ -121,7 +133,7 @@ const AddEmployee = () => {
             Email: "",
             OtherDomains: "",
             SkypeId: "",
-            Gender:"",
+            Gender: "",
             DesignationId: null, // Reset the DesignationId
           });
           setLoading(false);
@@ -135,213 +147,255 @@ const AddEmployee = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="">
-        {" "}
-        {/* Apply the CSS class to center the form */}
-        <div className="border rounded p-4 w-50">
-          <h2>Add New Employee</h2>
-          <form onSubmit={handleSubmit} className="w-100">
-            <div className="mb-3">
-              <label htmlFor="EmployeeName" className="form-label">
-                Employee Name*
-              </label>
-              <input
-                type="text"
-                className={`form-control ${
-                  errors.EmployeeName ? "is-invalid" : ""
-                }`}
-                id="EmployeeName"
-                name="EmployeeName"
-                value={employeeData.EmployeeName}
-                onChange={handleInputChange}
-                required
-              />
-              {errors.EmployeeName && (
-                <div className="invalid-feedback">{errors.EmployeeName}</div>
-              )}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="EmployeeId" className="form-label">
-                Employee ID*
-              </label>
-              <input
-                type="text"
-                className={`form-control ${
-                  errors.EmployeeId ? "is-invalid" : ""
-                }`}
-                id="EmployeeId"
-                name="EmployeeId"
-                value={employeeData.EmployeeId}
-                onChange={handleInputChange}
-                required
-              />
-              {errors.EmployeeId && (
-                <div className="invalid-feedback">{errors.EmployeeId}</div>
-              )}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="Email" className="form-label">
-                Email*
-              </label>
-              <input
-                type="email"
-                className={`form-control ${errors.Email ? "is-invalid" : ""}`}
-                id="Email"
-                name="Email"
-                value={employeeData.Email}
-                onChange={handleInputChange}
-                required
-              />
-              {errors.Email && (
-                <div className="invalid-feedback">{errors.Email}</div>
-              )}
-            </div>
+    <div className="container mt-5 ">
+      <ToastContainer/>
+      <div className="row ">
+        <div className="col-12">
+          <div className="border rounded p-4">
+            <h2 className="text-center mb-4">Add New Employee</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="EmployeeName" className="form-label">
+                      Employee Name*
+                    </label>
+                    <input
+                      type="text"
+                      className={`form-control ${
+                        errors.EmployeeName ? "is-invalid" : ""
+                      }`}
+                      id="EmployeeName"
+                      name="EmployeeName"
+                      value={employeeData.EmployeeName}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    {errors.EmployeeName && (
+                      <div className="invalid-feedback">
+                        {errors.EmployeeName}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="EmployeeId" className="form-label">
+                      Employee ID*
+                    </label>
+                    <input
+                      type="text"
+                      className={`form-control ${
+                        errors.EmployeeId ? "is-invalid" : ""
+                      }`}
+                      id="EmployeeId"
+                      name="EmployeeId"
+                      value={employeeData.EmployeeId}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    {errors.EmployeeId && (
+                      <div className="invalid-feedback">
+                        {errors.EmployeeId}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
 
-            <div className="mb-3">
-              <label htmlFor="Gender" className="form-label">
-                Gender*
-              </label>
-              <select
-                className={`form-select ${errors.Gender ? "is-invalid" : ""}`}
-                id="Gender"
-                name="Gender"
-                value={employeeData.Gender}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Gender</option>
-                {genderOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-              {errors.Gender && (
-                <div className="invalid-feedback">{errors.Gender}</div>
-              )}
-            </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="Email" className="form-label">
+                      Email*
+                    </label>
+                    <input
+                      type="email"
+                      className={`form-control ${
+                        errors.Email ? "is-invalid" : ""
+                      }`}
+                      id="Email"
+                      name="Email"
+                      value={employeeData.Email}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    {errors.Email && (
+                      <div className="invalid-feedback">{errors.Email}</div>
+                    )}
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="Gender" className="form-label">
+                      Gender*
+                    </label>
+                    <select
+                      className={`form-select ${
+                        errors.Gender ? "is-invalid" : ""
+                      }`}
+                      id="Gender"
+                      name="Gender"
+                      value={employeeData.Gender}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="">Select Gender</option>
+                      {genderOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.Gender && (
+                      <div className="invalid-feedback">{errors.Gender}</div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="Designation" className="form-label">
+                      Designation*
+                    </label>
+                    <select
+                      className={`form-select ${
+                        errors.Designation ? "is-invalid" : ""
+                      }`}
+                      id="Designation"
+                      name="Designation"
+                      value={employeeData.Designation}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="">Select Designation</option>
+                      {designationOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.Designation && (
+                      <div className="invalid-feedback">
+                        {errors.Designation}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="SpecializedRole" className="form-label">
+                      Specialized Role
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control "
+                      id="SpecializedRole"
+                      name="SpecializedRole"
+                      placeholder="ExSr Developer"
+                      value={employeeData.SpecializedRole}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+              </div>
 
-            
-            <div className="mb-3">
-              <label htmlFor="Designation" className="form-label">
-                Designation*
-              </label>
-              <select
-                className={`form-select ${
-                  errors.Designation ? "is-invalid" : ""
-                }`}
-                id="Designation"
-                name="Designation"
-                value={employeeData.Designation}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Designation</option>
-                {designationOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-              {errors.Designation && (
-                <div className="invalid-feedback">{errors.Designation}</div>
-              )}
-            </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="Domain1" className="form-label">
+                      Domain1*
+                    </label>
+                    <select
+                      className={`form-select ${
+                        errors.Domain1 ? "is-invalid" : ""
+                      }`}
+                      id="Domain1"
+                      name="Domain1"
+                      value={employeeData.Domain1}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="">Select Domain1</option>
+                      {domainOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.Domain1 && (
+                      <div className="invalid-feedback">{errors.Domain1}</div>
+                    )}
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="Domain2" className="form-label">
+                      Domain2
+                    </label>
+                    <select
+                      className="form-select"
+                      id="Domain2"
+                      name="Domain2"
+                      value={employeeData.Domain2}
+                      onChange={handleInputChange}
+                    >
+                      <option value="">Select Domain2</option>
+                      {domainOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
 
-            <div className="mb-3">
-              <label htmlFor="Specialized Role" className="form-label">
-                Specialized Role
-              </label>
-              <input
-                type="text"
-                className="form-control "
-                id="Specialized Role"
-                name="SpecializedRole"
-                placeholder="ExSr Developer"
-                value={employeeData.SpecializedRole}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="Domain1" className="form-label">
-                Domain1*
-              </label>
-              <select
-                className={`form-select ${errors.Domain1 ? "is-invalid" : ""}`}
-                id="Domain1"
-                name="Domain1"
-                value={employeeData.Domain1}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Domain1</option>
-                {domainOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-              {errors.Domain1 && (
-                <div className="invalid-feedback">{errors.Domain1}</div>
-              )}
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="Domain2" className="form-label">
-                Domain2
-              </label>
-              <select
-                className="form-select"
-                id="Domain2"
-                name="Domain2"
-                value={employeeData.Domain2}
-                onChange={handleInputChange}
-              >
-                <option value="">Select Domain2</option>
-                {domainOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="otherDomains" className="form-label">
-                Other Domains
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="OtherDomains"
-                name="OtherDomains"
-                value={employeeData.OtherDomains}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="SkypeId" className="form-label">
-                Skype ID
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="SkypeId"
-                name="SkypeId"
-                value={employeeData.SkypeId}
-                onChange={handleInputChange}
-              />
-            </div>
-            <button
-              type="submit"
-              className="btn btn-primary add-employeebtn"
-              id="login-btn"
-              disabled={loading}
-            >
-              {loading?"Adding...":"Add Employee"}
-              
-            </button>
-          </form>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="OtherDomains" className="form-label">
+                      Other Domains
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="OtherDomains"
+                      name="OtherDomains"
+                      value={employeeData.OtherDomains}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="SkypeId" className="form-label">
+                      Skype ID
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="SkypeId"
+                      name="SkypeId"
+                      value={employeeData.SkypeId}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="mb-3">
+                <button
+                  type="submit"
+                  className="btn btn-primary add-employeebtn"
+                  id="login-btn"
+                  disabled={loading}
+                >
+                  {loading ? "Adding..." : "Add Employee"}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

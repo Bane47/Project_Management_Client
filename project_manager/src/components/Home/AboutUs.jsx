@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <div>
         <section className="about-us" id="about-us">
-        <div className="container mt-5" id="about-scroll">
+        <div className="container mt-5 mb-5" id="about-scroll">
           <div className="row">
             <div className="col-md-6">
               <h2>About Us</h2>
@@ -27,7 +27,7 @@ const AboutUs = () => {
               <img
                 src="https://wallpaperaccess.com/full/4322061.jpg"
                 alt="About Us"
-                className="img-fluid rounded"
+                className="img-fluid rounded "
               />
             </div>
           </div>
