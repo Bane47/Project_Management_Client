@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddEmployee = () => {
   const [employeeData, setEmployeeData] = useState({
@@ -43,6 +43,7 @@ const AddEmployee = () => {
   ];
 
   const [errors, setErrors] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -113,16 +114,7 @@ const AddEmployee = () => {
       axios
         .post("http://localhost:3001/add-employee", updatedEmployeeData)
         .then((response) => {
-          toast.success('Employee Added SuccessFully!', {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            });
+          setErrorMessage(""); // Clear any previous error messages
           setEmployeeData({
             EmployeeName: "",
             EmployeeId: "",
@@ -139,7 +131,15 @@ const AddEmployee = () => {
           setLoading(false);
         })
         .catch((error) => {
+          setLoading(false);
           console.error("Error sending employee data:", error);
+          if (error.response.data.message === "Email Already Registered") {
+           
+            setErrorMessage("Email Already Registered");
+          } else {
+            console.log(error.response.data.message);
+            setErrorMessage("Error Adding Employee");
+          }
         });
     } else {
       console.error("Form has validation errors");
@@ -148,9 +148,15 @@ const AddEmployee = () => {
 
   return (
     <div className="container mt-5 ">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="row ">
         <div className="col-12">
+          {errorMessage && (
+            <div className="alert alert-danger mt-2" role="alert">
+              {errorMessage}
+            </div>
+          )}
+
           <div className="border rounded p-4">
             <h2 className="text-center mb-4">Add New Employee</h2>
             <form onSubmit={handleSubmit}>
@@ -158,7 +164,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="EmployeeName" className="form-label">
-                      Employee Name*
+                      Employee Name <span className="text-primary">*</span>
                     </label>
                     <input
                       type="text"
@@ -170,6 +176,7 @@ const AddEmployee = () => {
                       value={employeeData.EmployeeName}
                       onChange={handleInputChange}
                       required
+                      disabled={loading}
                     />
                     {errors.EmployeeName && (
                       <div className="invalid-feedback">
@@ -181,17 +188,19 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="EmployeeId" className="form-label">
-                      Employee ID*
+                      Employee ID<span className="text-primary">*</span>
                     </label>
                     <input
                       type="text"
                       className={`form-control ${
                         errors.EmployeeId ? "is-invalid" : ""
                       }`}
+                      placeholder="Enter a Four Digit Pin"
                       id="EmployeeId"
                       name="EmployeeId"
                       value={employeeData.EmployeeId}
                       onChange={handleInputChange}
+                      disabled={loading}
                       required
                     />
                     {errors.EmployeeId && (
@@ -207,7 +216,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="Email" className="form-label">
-                      Email*
+                      Email <span className="text-primary">*</span>
                     </label>
                     <input
                       type="email"
@@ -218,6 +227,7 @@ const AddEmployee = () => {
                       name="Email"
                       value={employeeData.Email}
                       onChange={handleInputChange}
+                      disabled={loading}
                       required
                     />
                     {errors.Email && (
@@ -228,7 +238,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="Gender" className="form-label">
-                      Gender*
+                      Gender <span className="text-primary">*</span>
                     </label>
                     <select
                       className={`form-select ${
@@ -238,6 +248,7 @@ const AddEmployee = () => {
                       name="Gender"
                       value={employeeData.Gender}
                       onChange={handleInputChange}
+                      disabled={loading}
                       required
                     >
                       <option value="">Select Gender</option>
@@ -257,7 +268,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="Designation" className="form-label">
-                      Designation*
+                      Designation <span className="text-primary">*</span>
                     </label>
                     <select
                       className={`form-select ${
@@ -267,6 +278,7 @@ const AddEmployee = () => {
                       name="Designation"
                       value={employeeData.Designation}
                       onChange={handleInputChange}
+                      disabled={loading}
                       required
                     >
                       <option value="">Select Designation</option>
@@ -295,6 +307,7 @@ const AddEmployee = () => {
                       name="SpecializedRole"
                       placeholder="ExSr Developer"
                       value={employeeData.SpecializedRole}
+                      disabled={loading}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -305,7 +318,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="Domain1" className="form-label">
-                      Domain1*
+                      Domain1* <span className="text-primary">*</span>
                     </label>
                     <select
                       className={`form-select ${
@@ -315,6 +328,7 @@ const AddEmployee = () => {
                       name="Domain1"
                       value={employeeData.Domain1}
                       onChange={handleInputChange}
+                      disabled={loading}
                       required
                     >
                       <option value="">Select Domain1</option>
@@ -339,6 +353,7 @@ const AddEmployee = () => {
                       id="Domain2"
                       name="Domain2"
                       value={employeeData.Domain2}
+                      disabled={loading}
                       onChange={handleInputChange}
                     >
                       <option value="">Select Domain2</option>
@@ -365,6 +380,7 @@ const AddEmployee = () => {
                       name="OtherDomains"
                       value={employeeData.OtherDomains}
                       onChange={handleInputChange}
+                      disabled={loading}
                     />
                   </div>
                 </div>
@@ -380,6 +396,7 @@ const AddEmployee = () => {
                       name="SkypeId"
                       value={employeeData.SkypeId}
                       onChange={handleInputChange}
+                      disabled={loading}
                     />
                   </div>
                 </div>

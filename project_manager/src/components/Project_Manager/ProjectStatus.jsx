@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
+import './PM.css'
 
 const ProjectStatus = () => {
-  const user = sessionStorage.getItem("accessToken");
+  const user = sessionStorage.getItem("user");
   const decoded = jwtDecode(user);
   const userEmail = decoded.email;
 
@@ -17,12 +18,12 @@ const ProjectStatus = () => {
       .catch((error) => {
         console.error("Error fetching project data: ", error);
       });
-  }, []);
+  }, [userEmail]);
 
   return (
     <div>
-      <h1>Project Status</h1>
-      <table className="table table-bordered table-striped">
+      <h1 className='ms-4 mt-2'>Project Status</h1>
+      <table className="table table-bordered table-striped ms-3 mt-3 table-report" >
         <thead>
           <tr>
             <th>Project Title</th>

@@ -28,14 +28,7 @@ const PMSidebar = () => {
           
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/addproject" >
-           
-              <FontAwesomeIcon icon={faUsers} />
-               Add Projects
-          
-          </NavLink>
-        </li>
+       
         <li>
           <NavLink to="/projectstatus" >
            
@@ -44,6 +37,7 @@ const PMSidebar = () => {
           
           </NavLink>
         </li>
+        
 
         <li>
           <NavLink to="/reportlead" >
@@ -51,6 +45,14 @@ const PMSidebar = () => {
               <FontAwesomeIcon icon={faChartBar} />
              Report Lead
             
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/settings" >
+           
+              <FontAwesomeIcon icon={faUsers} />
+               Settings
+          
           </NavLink>
         </li>
       </ul>

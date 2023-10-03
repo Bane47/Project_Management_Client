@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import TaskModal from './TaskModal';
+import React, { useState } from "react";
+import axios from "axios";
+import TaskModal from "./TaskModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const EmployeesList = ({ selectedProject, userEmail, selectedEmployee, selectedEmployeeEmail, employeeData, formData, setFormData }) => {
+const EmployeesList = ({
+  selectedProject,
+  userEmail,
+  selectedEmployee,
+  selectedEmployeeEmail,
+  employeeData,
+  formData,
+  setFormData,
+}) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -31,33 +41,52 @@ const EmployeesList = ({ selectedProject, userEmail, selectedEmployee, selectedE
       employeeName: formData.employeeName,
       employeeEmail: formData.employeeEmail,
     };
-  
-    axios.post('http://localhost:3001/add-task', taskData)
+
+    axios
+      .post("http://localhost:3001/add-task", taskData)
       .then((res) => {
-        console.log('Task added successfully:', res.data);
+        toast.success("Task Assigned SuccessFully!", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
         setFormData({
-          projectName:formData.ProjectName,
-          taskName: '',
-          taskDescription: '',
-          dueDate: '',
-          employeeName: '',
-          employeeEmail: '',
+          projectName: formData.ProjectName,
+          taskName: "",
+          taskDescription: "",
+          dueDate: "",
+          employeeName: "",
+          employeeEmail: "",
         });
       })
       .catch((error) => {
-        console.error('Error adding task:', error);
+        console.error("Error adding task:", error);
       });
 
-
-  
     closeModal();
   };
-  
 
   return (
     <div>
       <h4>Employees List</h4>
       <div className="row">
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         {employeeData.map((employee, index) => (
           <div key={index} className="col-md-4 mb-4">
             <div className="card">
@@ -71,8 +100,8 @@ const EmployeesList = ({ selectedProject, userEmail, selectedEmployee, selectedE
                     // Set the employee name and email in the formData
                     setFormData({
                       ...formData,
-                      employeeName: employee.EmployeeName || '', // Ensure it's not null or undefined
-                      employeeEmail: employee.Email || '', // Ensure it's not null or undefined
+                      employeeName: employee.EmployeeName || "", // Ensure it's not null or undefined
+                      employeeEmail: employee.Email || "", // Ensure it's not null or undefined
                     });
                   }}
                   className="btn add-employeebtn text-white"

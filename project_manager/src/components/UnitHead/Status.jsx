@@ -4,7 +4,7 @@ import axios from 'axios';
 import './UnitHead.css'; // Import your CSS file for styling
 
 const Status = () => {
-  const user = sessionStorage.getItem('accessToken');
+  const user = sessionStorage.getItem('user');
   const decoded = jwtDecode(user);
   const userEmail = decoded.email;
 
@@ -24,8 +24,8 @@ const Status = () => {
   return (
     <div>
       <div>
-        <h3>Assigned Tasks</h3>
-        <div className="table-responsive">
+        <h3 className='ms-3 mt-2'>Assigned Tasks</h3>
+        <div className="table-responsive table-report border ms-3 mt-3">
           <table className="table">
             <thead>
               <tr>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 
 const MyProject = () => {
-  const user = sessionStorage.getItem('accessToken');
+  const user = sessionStorage.getItem('user');
   const decoded = jwtDecode(user);
   const userEmail = decoded.email;
 
@@ -22,12 +22,12 @@ const MyProject = () => {
 
   return (
     <div>
-      <h4>Your Projects</h4>
-      <div className="row">
+      <h4 className='ms-4 mb-3 mt-3'>Your Projects</h4>
+      <div className="row ms-4 mt-3">
         {projects.map((project, index) => (
           <div key={index} className="col-md-4 mb-4">
-            <div className="card">
-              <div className="card-body">
+            <div className="card" style={{ height: '100%',width:"100%" }}>
+              <div className="card-body" >
                 <h5 className="card-title">Project Title: {project.projectTitle}</h5>
                 <p className="card-text">Project Manager Email: {project.projectManagerEmail}</p>
                 <p className="card-text">Team Lead: {project.teamLead}</p>
@@ -38,8 +38,8 @@ const MyProject = () => {
                 <p className="card-text">Project Description: {project.projectDescription}</p>
                 <p className="card-text">Project Domain: {project.projectDomain}</p>
                 <p className="card-text">Project Category: {project.projectCategory}</p>
-                <p className="card-text">Start Date: {project.startDate}</p>
-                <p className="card-text">End Date: {project.endDate}</p>
+                <p className="card-text">Start Date: {new Date(project.startDate).toLocaleString()}</p>
+                <p className="card-text">End Date: {new Date(project.endDate).toLocaleString()}</p>
               </div>
             </div>
           </div>

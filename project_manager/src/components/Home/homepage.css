@@ -1,0 +1,205 @@
+#explore-btn{
+    min-width: 20% !important;
+ }
+ .reduced-height {
+    height: 500px; 
+  }
+ /*  header section */
+ .header {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .header p {
+    font-size: 1.2rem;
+  }
+  
+  /*hero section */
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem;
+  }
+  
+  .hero-content {
+    flex: 1;
+  }
+  
+  .hero h2 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+  
+ 
+  .hero-image img {
+ 
+   
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .testimonial {
+    text-align: center;
+    background-color: #f7f7f7;
+    padding: 4rem;
+  }
+  
+  .testimonial h3 {
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+  
+  
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 4rem;
+  }
+  
+  .feature {
+    text-align: center;
+  }
+  
+  .feature-icon {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .feature h4 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  /* Style the CTA section */
+  .cta {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 4rem;
+  }
+  
+  .cta p {
+    font-size: 1.5rem;
+  }
+  
+ 
+  /*  footer section */
+ .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+   
+  }
+  
+  .footer p {
+    margin: 0; 
+  }
+  
+  .footer-contact {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #ccc;
+  }
+  
+  .footer-contact a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-contact a:hover {
+    color: #66f; 
+  }
+ 
+  .footer-address {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #ccc;
+  }
+  
+  .footer-address span {
+    display: block;
+    margin-top: 0.2rem;
+  }
+  .footer-padding {
+    padding-bottom: 1rem;
+  }
+  
+ 
+  .about-us {
+    background-color: #f7f7f7;
+    padding: 4rem;
+  }
+  
+  .about-us h2 {
+    font-size: 2rem;
+  }
+  
+  .about-us p {
+    font-size: 1.2rem;
+  }
+  
+  .achievements {
+    background-color: #fff;
+    padding: 4rem;
+  }
+  
+  .achievements h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .achievement-card {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    transition: transform 0.2s ease-in-out;
+    border-radius: 10px;
+  }
+ 
+  .achievement-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  
+  .achievement-card h5 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .achievement-card p {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  /* Adjustments to the CTA section */
+  .cta {
+    background-color: #333;
+    color: #fff;
+    padding: 4rem;
+  }
+  
+  .cta p {
+    font-size: 1.5rem;
+  }
+ 
+  @media (max-width:500px){
+    #img1{
+       display: none;
+    }
+  }

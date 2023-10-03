@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 
 const ReportManager = () => {
-  const user = sessionStorage.getItem('accessToken');
+  const user = sessionStorage.getItem('user');
   const decoded = jwtDecode(user);
   const userEmail = decoded.email;
 
@@ -42,8 +42,8 @@ const ReportManager = () => {
 
   return (
     <div>
-      <h4>Project Status</h4>
-      <div className="row">
+      <h4 className='ms-3 mt-3'>Project Status</h4>
+      <div className="row table-report ms-3 mt-3">
         {tasks.map((task) => (
           <div key={task._id} className="col-md-4 mb-4">
             <div className="card">
@@ -58,6 +58,7 @@ const ReportManager = () => {
                     onChange={(e) => handleStatusChange(task._id, e.target.value)}
                   >
                     <option value="Assigned">Assigned</option>
+                    <option value="Received">Received</option>
                     <option value="Delay In Progress">Delay In Progress</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>

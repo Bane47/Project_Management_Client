@@ -1,58 +1,58 @@
+
 .sidebar {
-    /* min-height: 88.7vh; */
-    min-height: 100vh;
-    /* height: 100%; */
-    ;
-   
-  }
-  
-  .sidebar h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    margin-bottom: 10px;
-  }
-  
-  .sidebar ul li a {
-    text-decoration: none;
-    color: rgb(113, 110, 110);
-    font-size: 16px;
-    font-weight: 500;
-    display: block;
-  
-  }
-  
-  .sidebar ul li a:hover {
-    color: rgb(0, 0, 0);
-  }
-  
-  .sidebar ul li a.active-link {
-    font-weight: bold;
-    color: blue;
-  }
-  .active-link{
-    background-color: lightgrey;
+  /* min-height: 88.7vh; */
+  min-height: 100vh;
+  /* height: 100%; */
+  ;
+}
+
+
+.sidebar h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  color: rgb(0, 0, 0);
+}
+
+/* Add any additional styling for the active link here */
+
+#side-main {
+  overflow: hidden !important;
+}
+
+#user-text {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+
+.active{
+  background-color: gray!important;
   border-radius: 5px;
+}
+@media (max-width: 767px) {
+  .sidebar {
+    min-height: 11vh !important;
+    min-width: 100vw;
+    padding: 1em 0;
   }
-  #side-main{
-    overflow: hidden !important;
-  }
-  
-  #user-text {
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  }
-  @media (max-width: 767px) {
-    .sidebar {
-      min-height: 11vh !important;
-      min-width: 100vw;
-      padding: 1em 0;
-    }
-  }
+}

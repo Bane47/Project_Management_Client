@@ -7,7 +7,6 @@ const EmployeeDashboard = () => {
   return (
     <div className="container mt-5">
       <div className="row">
-        {/* Assign Tasks */}
         <div className="col-md-4 mb-4">
           <Link to="/tasks" className="link-no-underline">
             <div className="card text-center">
@@ -26,7 +25,6 @@ const EmployeeDashboard = () => {
           </Link>
         </div>
 
-        {/* Task Status */}
         <div className="col-md-4 mb-4">
           <Link to="/updatestatus" className="link-no-underline">
             <div className="card text-center">

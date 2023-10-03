@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faGear,
   faUserPlus,
   faUsers,
   faUserTie,
@@ -26,7 +27,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="container mt-5">
-      <div className="row">
+      <div className="row table-report">
         <div className="col-md-4 mb-4">
           <Link to="/addemployee" className="link-no-underline">
             <div className="card text-center">
@@ -46,6 +47,19 @@ const AdminDashboard = () => {
             <div className="card text-center">
               <div className="card-body">
                <span className="text-primary"><FontAwesomeIcon icon={faUsers} size="2x" className="mb-2" /></span> 
+                <h5 className="card-title">Number of Employees</h5>
+                <p className="card-text">{numEmployees}</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        <div className="col-md-4 mb-4">
+          <Link to="/settings">
+            {" "}
+            <div className="card text-center">
+              <div className="card-body">
+               <span className="text-primary"><FontAwesomeIcon icon={faGear} size="2x" className="mb-2" /></span> 
                 <h5 className="card-title">Number of Employees</h5>
                 <p className="card-text">{numEmployees}</p>
               </div>

@@ -7,7 +7,6 @@ const PMDashboard = () => {
   return (
     <div className="container mt-5">
       <div className="row">
-        {/* Your Projects */}
         <div className="col-md-4 mb-4">
           <Link to="/yourprojects" className="link-no-underline">
             <div className="card text-center">

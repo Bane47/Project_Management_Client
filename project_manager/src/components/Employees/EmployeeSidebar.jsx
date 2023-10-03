@@ -37,6 +37,14 @@ const EmployeeSidebar = () => {
             
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/settings" ClassName="active">
+            
+              <FontAwesomeIcon icon={faChartBar} />
+            Settings
+            
+          </NavLink>
+        </li>
       </ul>
     </div>
   );

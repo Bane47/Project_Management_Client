@@ -38,6 +38,18 @@ const Employees = () => {
   const columns = React.useMemo(
     () => [
       {
+        Header: "Profile",
+        accessor: "Profile", // Assuming "Profile" is a field in your data
+        Cell: ({ row }) => (
+          <img
+            src={`http://localhost:3001/images/${row.values.Profile}`}
+            alt={`Profile for ${row.values.EmployeeName}`}
+            style={{ maxWidth: "50px",maxHeight:"40px" }} // Optional: Set a maximum width for the image
+          />
+        ),
+      },
+
+      {
         Header: "Employee Name",
         accessor: "EmployeeName",
       },
@@ -60,6 +72,10 @@ const Employees = () => {
       {
         Header: "Designation",
         accessor: "Designation",
+      },
+      {
+        Header: "SkypeID",
+        accessor: "SkypeId",
       },
       {
         Header: "Actions",
@@ -105,7 +121,7 @@ const Employees = () => {
       columns,
       data: empData,
       initialState: {
-        pageSize: 5,
+        pageSize: 4,
       },
     },
     useGlobalFilter,
@@ -148,14 +164,14 @@ const Employees = () => {
         pauseOnHover
         theme="dark"
       />
-      <div className="row mt-4">
+      <div className="row mt-4 table-report">
         <div className="col-12 d-flex align-items-center">
           <div>
             <div className="search">
               <input
                 type="text"
                 placeholder="Search"
-                className="py-1 mt-1"
+                className="py-1 mt-1 rounded"
                 value={globalFilter}
                 onChange={(e) => setGlobalFilter(e.target.value)}
               />

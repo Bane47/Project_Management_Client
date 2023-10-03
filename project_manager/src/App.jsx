@@ -37,6 +37,7 @@ import TaskStatus from "./components/Team_Lead/TaskStatus";
 import Tasks from "./components/Employees/Tasks";
 import UpdateStatus from "./components/Employees/UpdateStatus";
 import Settings from "./components/UnitHead/Settings";
+import { ProjectProvider } from "./context/ProjectContext";
 
 function App() {
   const [userRole,setUserRole]=useState(null);
@@ -53,7 +54,7 @@ function App() {
   const CommonLayout = (
     <div className="container-breakpoint overflow-hidden">
       <div className="row"  id="side-main">
-        <div className="col-md-2">
+        <div className="col-md-2 pe-0">
           {userRole === "07" && <AdminSidebar />}
 
           {userRole === "01" && <UnitHeadSidebar />}
@@ -66,7 +67,7 @@ function App() {
             <EmployeeSidebar />
           )}
         </div>
-        <div className="col-md-10">
+        <div className="col-md-10 p-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/aboutus" element={<AboutUs />} />
@@ -76,6 +77,8 @@ function App() {
                 <Route path="/employees" element={<Employees />} />
                 <Route path="/dashboard" element={<AdminDashboard />} />
                 <Route path="/addemployee" element={<AddEmployee />} />
+                <Route path="/settings" element={<Settings/>}/>
+
               </>
             )}
             {userRole === "01" && (
@@ -93,6 +96,8 @@ function App() {
                 <Route path="/dashboard" element={<PMDashboard />} />
                 <Route path="/projectstatus" element={<ProjectStatus />} />
                 <Route path="/reportlead" element={<ReportLead />} />
+                <Route path="/settings" element={<Settings/>}/>
+
               </>
             )}
             {userRole === "03" && (
@@ -103,6 +108,8 @@ function App() {
                 <Route path="/employeelist" element={<EmployeesList />} />
                 <Route path="/taskstatus" element={<TaskStatus />} />
                 <Route path="/reportmanager" element={<ReportManager />} />
+                <Route path="/settings" element={<Settings/>}/>
+
               </>
             )}
             {["04", "05", "06"].includes(userRole) && (
@@ -110,6 +117,8 @@ function App() {
               <Route path="/dashboard" element={<EmployeeDashboard />} />
               <Route path="/tasks" element={<Tasks/>}/>
               <Route path="/updatestatus" element={<UpdateStatus/>}/>
+              <Route path="/settings" element={<Settings/>}/>
+
               </>
             )}
           </Routes>
@@ -120,6 +129,7 @@ function App() {
 
   return (
     <UserContextProvider>
+      <ProjectProvider>
       <BrowserRouter>
         <Navbar />
         {!userRole && (
@@ -141,6 +151,7 @@ function App() {
         </Routes>
         {userRole && CommonLayout}
       </BrowserRouter>
+      </ProjectProvider>
     </UserContextProvider>
   );
 }

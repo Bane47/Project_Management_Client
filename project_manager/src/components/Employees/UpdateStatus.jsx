@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const UpdateStatus = () => {
-  const user = sessionStorage.getItem("accessToken");
+  const user = sessionStorage.getItem("user");
   const decoded = jwtDecode(user);
   const userEmail = decoded.email;
 
@@ -86,8 +86,8 @@ const UpdateStatus = () => {
 
   return (
     <div>
-      <h2>Update Status</h2>
-      <table className="table table-bordered">
+      <h2 className="ms-3 mt-3">Update Status</h2>
+      <table className="table table-bordered table-report ms-3 mt-3">
         <thead>
           <tr>
             <th>Task Name</th>

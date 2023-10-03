@@ -1,39 +1,4 @@
-/* AssignProject.css */
 
-.assign-project {
-  margin: 20px auto;
-  max-width: 900px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.assign-project h2 {
-  margin-bottom: 20px;
-}
-
-.form-label {
-  font-weight: bold;
-}
-
-.form-control {
-  margin-bottom: 15px;
-  width: 100%;
-}
-
-.btn-primary {
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-}
 
 /* Status.css */
 .table-responsive {
@@ -68,6 +33,31 @@
 .user-pro {
   width: 70%;
 }
+
+/* UnitHead.css */
+.fixed-width-profile-image {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%; /* Make the image rounded */
+}
+
+/* Style for the update profile button */
+.update-profile-button {
+  background-color: #007bff; /* Blue color (you can customize this) */
+  color: #fff; /* White text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth hover effect */
+}
+
+/* Style for the file input */
+.profile-image-input {
+  margin-top: 10px;
+  display: block;
+}
+
 
 @media (max-width: 576px) {
   .profile-details  {

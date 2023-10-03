@@ -3,7 +3,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 
 const Tasks = () => {
-  const user = sessionStorage.getItem("accessToken");
+  const user = sessionStorage.getItem("user");
   const decoded = jwtDecode(user);
   const userEmail = decoded.email;
 
@@ -59,7 +59,6 @@ const Tasks = () => {
                   <p className="card-text"><strong>Status:</strong> {task.status}</p>
                   <p className="card-text"><strong>Due Date:</strong> {new Date(task.dueDate).toLocaleDateString()}</p>
                   <p className="card-text"><strong>Team Lead Email:</strong> {task.TeamLeadEmail}</p>
-                  {/* Add other relevant task details here */}
                 </div>
               </div>
             ))}

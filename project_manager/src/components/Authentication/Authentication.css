@@ -1,35 +1,59 @@
-/* AddEmployee.css */
+/* Authentication.css */
 
 /* Center the form */
 .center-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Adjust the height as needed */
-    
-  }
-  
-  /* Style the login button */
-  #login-btn {
-    background-color: darkblue;
-    color: white; /* Text color */
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  /* Hover effect for .Rem-For class */
-  .Rem-For:hover {
-    color: red;
-  }
-  
-@media(max-width:575px){
-  #signin-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height as needed */
+  position: relative; /* Add this to create a stacking context */
+}
+
+/* Style the login button */
+#login-btn {
+  background-color: darkblue;
+  color: white; /* Text color */
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effect for .Rem-For class */
+.Rem-For:hover {
+  color: red;
+}
+
+/* Update video styling */
+#home-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0; /* Ensure it starts from the top-left corner */
+  width: 100%;
+  height: 100%; /* Adjust to cover the entire viewport */
+  object-fit: fill;
+  z-index: -1; /* Set the video below other content */
+}
+
+/* Adjust card styling for better visibility */
+#signin-card {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Add a semi-transparent background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better contrast */
+}
+
+@media (max-width: 575px) {
+  #signin-card {
     width: 80%;
   }
 }
-#forget-pass{
+#forget-pass {
   height: 80vh;
 }

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EditModal = ({ employee, onClose }) => {
   const [editedEmployee, setEditedEmployee] = useState(employee);
@@ -15,11 +15,14 @@ const EditModal = ({ employee, onClose }) => {
   const handleSave = () => {
     // Send a PUT request to update the employee data
     axios
-      .put(`http://localhost:3001/updateEmployee/${editedEmployee.EmployeeId}`, editedEmployee)
+      .put(
+        `http://localhost:3001/updateEmployee/${editedEmployee.EmployeeId}`,
+        editedEmployee
+      )
       .then((response) => {
         console.log("Employee data updated successfully", response.data);
         onClose(); // Close the modal after successful update
-        toast.success('Edited SuccessFully', {
+        toast.success("Edited SuccessFully", {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: true,
@@ -28,7 +31,7 @@ const EditModal = ({ employee, onClose }) => {
           draggable: true,
           progress: undefined,
           theme: "dark",
-          });
+        });
       })
       .catch((error) => {
         console.error("Error updating employee data", error);
@@ -73,8 +76,17 @@ const EditModal = ({ employee, onClose }) => {
             <Form.Label>Domain</Form.Label>
             <Form.Control
               type="text"
-              name="Domain"
-              value={editedEmployee.Domain1}
+              name="Domain1" // Change this to "Domain1"
+              value={editedEmployee.Domain1} // Change this to "Domain1"
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="SkypeID">
+            <Form.Label>SkypeId</Form.Label>
+            <Form.Control
+              type="text"
+              name="SkypeId" // Change this to "Domain1"
+              value={editedEmployee.SkypeId} // Change this to "Domain1"
               onChange={handleInputChange}
             />
           </Form.Group>

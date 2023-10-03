@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
+import './PM.css'
 
 const ReportLead = () => {
-  const user = sessionStorage.getItem('accessToken');
+  const user = sessionStorage.getItem('user');
   const decoded = jwtDecode(user);
   const userEmail = decoded.email;
 
@@ -39,8 +40,8 @@ const ReportLead = () => {
 
   return (
     <div>
-      <h4>Project Status</h4>
-      <table className="table table-striped">
+      <h4 className='ms-3 mt-2 mb-3'>Project Status</h4>
+      <table className="table table-striped border table-report ms-3" >
         <thead>
           <tr>
             <th>Project Title</th>
