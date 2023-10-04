@@ -19,7 +19,6 @@ const Settings = () => {
       .get(`http://localhost:3001/getEmp-dataOne?email=${userEmail}`)
       .then((res) => {
         setUserData(res.data);
-        console.log(res.data);
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
@@ -35,14 +34,20 @@ const Settings = () => {
   };
 
   const handleUpdateProfile = () => {
+    if (!newProfileImage) {
+      toast.error("Please select an image to update your profile.");
+      return;
+    }
+
     const formData = new FormData();
+    formData.append("_id", userData._id);
     formData.append("profileImage", newProfileImage);
 
     axios
       .put(`http://localhost:3001/updateProfile?email=${userEmail}`, formData)
       .then((res) => {
         console.log("Profile image updated successfully");
-        toast.success(`Profile  updated successfully`, {
+        toast.success(`Profile updated successfully`, {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: true,
@@ -54,9 +59,8 @@ const Settings = () => {
         });
 
         setTimeout(() => {
-          window.location.reload()
+          window.location.reload();
         }, 2500);
-        
       })
       .catch((error) => {
         console.error("Error updating profile:", error);
@@ -65,23 +69,23 @@ const Settings = () => {
 
   return (
     <div className="user-profile container align-items-center d-flex flex-column mt-5">
-       <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable={false}
-              pauseOnHover
-              theme="dark"
-            />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme="dark"
+      />
       <h2 className="text-center">User Profile</h2>
       {userData && (
         <div className="profile-details vw-75 row justify-content-center align-items-center card d-flex flex-row p-md-5">
           <div className="col-12 col-md-5 col-lg-4 text-center border border-1">
-          <div className="profile-image-container p-3">
+            <div className="profile-image-container p-3">
               <img
                 src={`http://localhost:3001/images/${userData.Profile}`}
                 alt="Profile"

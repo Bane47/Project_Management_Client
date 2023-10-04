@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTasks, faPlus, faChartLine, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import { faTasks, faPlus, faChartLine, faChartBar, faGear } from '@fortawesome/free-solid-svg-icons';
 
 const PMDashboard = () => {
   return (
@@ -21,21 +21,7 @@ const PMDashboard = () => {
           </Link>
         </div>
 
-        {/* Add Project */}
-        <div className="col-md-4 mb-4">
-          <Link to="/addproject" className="link-no-underline">
-            <div className="card text-center">
-              <div className="card-body">
-                <span className="text-primary">
-                  <FontAwesomeIcon icon={faPlus} size="2x" className="mb-2" />
-                </span>
-                <h5 className="card-title">Add Project</h5>
-                <p className="card-text">Add a new project.</p>
-              </div>
-            </div>
-          </Link>
-        </div>
-
+        
         {/* Project Status */}
         <div className="col-md-4 mb-4">
           <Link to="/projectstatus" className="link-no-underline">
@@ -65,6 +51,34 @@ const PMDashboard = () => {
             </div>
           </Link>
         </div>
+
+        {/* Add Project */}
+        <div className="col-md-4 mb-4">
+          <Link to="/settings" className="link-no-underline">
+            <div className="card text-center">
+              <div className="card-body">
+                <span className="text-primary">
+                  <FontAwesomeIcon icon={faGear} size="2x" className="mb-2" />
+                </span>
+                <h5 className="card-title">Settings</h5>
+                <p className="card-text">Click Here</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        <div className="col-md-4 mb-4">
+        <Link to="/currentannouncements" className="link-no-underline">
+          <div className="card text-center">
+            <div className="card-body">
+            <span className="text-primary"> <FontAwesomeIcon icon={faGear} size="2x" className="mb-2" /></span>
+              <h5 className="card-title">Announcements</h5>
+              <p className="card-text">Click here&gt;&gt;</p>
+            </div>
+          </div>
+        </Link>
+      </div> 
+
       </div>
     </div>
   );

@@ -31,6 +31,12 @@ const AdminSidebar = () => {
             Settings
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/announcements" activeClassName="active-link">
+            <FontAwesomeIcon icon={faUsers} />
+            Announcements
+          </NavLink>
+        </li>
       </ul>
     </div>
   );

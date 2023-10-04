@@ -10,6 +10,8 @@ const AddProject = () => {
   const decoded = jwtDecode(user);
   const userEmail = decoded.email;
 
+  const today = new Date().toISOString().split("T")[0];
+
   const [empdata, setEmployeeData] = useState([]);
   const [projectTitle, setProjectTitle] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -21,7 +23,7 @@ const AddProject = () => {
   const [clientName, setClientName] = useState("");
   const [clientEmail, setClientEmail] = useState("");
   const [clientSkypeId, setClientSkypeId] = useState("");
-  const [errors, setErrors] = useState({}); // Store validation errors
+  const [errors, setErrors] = useState({}); 
 
   // Use the useProjectContext hook to access projectData from context
   const { projectData } = useProjectContext();
@@ -188,14 +190,12 @@ const AddProject = () => {
             </label>
             <input
               type="date"
-              className={`form-control ${errors.startDate ? "is-invalid" : ""}`}
+              className={`form-control`}
               id="startDate"
               value={startDate}
+              min={today} // Set the minimum date to today
               onChange={(e) => setStartDate(e.target.value)}
             />
-            {errors.startDate && (
-              <div className="invalid-feedback">{errors.startDate}</div>
-            )}
           </div>
 
           <div className="mb-3">

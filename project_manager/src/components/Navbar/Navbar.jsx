@@ -138,7 +138,7 @@ const NavBar = () => {
             <Nav.Link
               as={NavLink}
               to="/login"
-              className="nav-link me-5 ms-3 text-primary"
+              className="nav-link me-5 ms-3 text-white"
             >
               <strong>Login</strong>
             </Nav.Link>

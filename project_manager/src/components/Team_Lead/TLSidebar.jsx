@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios'
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faUsers, faChartBar } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +7,7 @@ import jwtDecode from "jwt-decode";
 import "../Admin/Sidebar.css";
 
 const TLSidebar = () => {
-  const user = sessionStorage.getItem('user');
+  const user = sessionStorage.getItem("user");
   const decoded = jwtDecode(user);
   const userEmail = decoded.email;
 
@@ -25,10 +25,28 @@ const TLSidebar = () => {
       });
   }, [userEmail]);
 
+  const [receivedMessages, setReceivedMessages] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/Get-Message")
+      .then((res) => {
+        const filteredMessages = res.data.filter(
+          (message) => message.deleted === "false"
+        );
+        setReceivedMessages(filteredMessages);
+        console.log(filteredMessages);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  const numAnnouncements = receivedMessages.length;
 
   const renderBadge = (count) => {
     if (count > 0) {
-      return <span className="badge  bg-black">{count}</span>;
+      return <span className="badge  add-employeebtn">{count}</span>;
     }
     return null;
   };
@@ -45,7 +63,7 @@ const TLSidebar = () => {
         <li>
           <NavLink to="/myprojects">
             <FontAwesomeIcon icon={faUsers} />
-            Project Details {renderBadge(projects.length)}
+            Your Projects {renderBadge(projects.length)}
           </NavLink>
         </li>
 
@@ -65,6 +83,18 @@ const TLSidebar = () => {
           <NavLink to="/reportmanager">
             <FontAwesomeIcon icon={faChartBar} />
             Report Manager
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/currentannouncements">
+            <FontAwesomeIcon icon={faHome} />
+            Announcements
+            {numAnnouncements > 0 && (
+              <span className="badge badge-pill badge-danger bg-primary ms-2">
+                {numAnnouncements}
+              </span>
+            )}
           </NavLink>
         </li>
         <li>

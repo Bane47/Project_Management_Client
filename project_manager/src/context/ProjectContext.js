@@ -1,12 +1,10 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 
 const ProjectContext = createContext();
 
-export function useProjectContext() {
-  return useContext(ProjectContext);
-}
+export const useProjectContext = () => useContext(ProjectContext);
 
-export function ProjectProvider({ children }) {
+export const ProjectProvider = ({ children }) => {
   const [projectData, setProjectData] = useState({});
 
   return (
@@ -14,4 +12,4 @@ export function ProjectProvider({ children }) {
       {children}
     </ProjectContext.Provider>
   );
-}
+};

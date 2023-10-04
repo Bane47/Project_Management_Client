@@ -25,7 +25,10 @@ const Status = () => {
     <div>
       <div>
         <h3 className='ms-3 mt-2'>Assigned Tasks</h3>
-        <div className="table-responsive table-report border ms-3 mt-3">
+        {tasks.length === 0 ?(
+          <p>No projects Available</p>
+        ):(
+        <div className="table-responsive table-report  ms-3 mt-3">
           <table className="table">
             <thead>
               <tr>
@@ -41,12 +44,13 @@ const Status = () => {
                   <td>{task.projectTitle}</td>
                   <td>{task.projectDescription}</td>
                   <td>{task.projectManager}</td>
-                  <td>{task.status}</td>
+                  <td className='text-primary'>{task.status}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        )}
       </div>
     </div>
   );

@@ -5,14 +5,16 @@ import {
   faTasks,
   faClipboardList,
   faChartBar,
+  faGear,
   // Unique icon for "Calendar"
-  faBell, // Unique icon for "Notifications"
+  faBell,
+  faNewspaper, // Unique icon for "Notifications"
   // Unique icon for "Profile"
 } from "@fortawesome/free-solid-svg-icons";
 
 const TLDashboard = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 table-report">
       <div className="row">
         {/* My Projects */}
         <div className="col-md-4 mb-4">
@@ -81,6 +83,32 @@ const TLDashboard = () => {
             </div>
           </Link>
         </div>
+
+        <div className="col-md-4 mb-4">
+          <Link to="/settings" className="link-no-underline">
+            <div className="card text-center">
+              <div className="card-body">
+                <span className="text-primary">
+                  <FontAwesomeIcon icon={faGear} size="2x" className="mb-2" />
+                </span>
+                <h5 className="card-title">Settings</h5>
+                <p className="card-text">Click Here</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        <div className="col-md-4 mb-4">
+        <Link to="/currentannouncements" className="link-no-underline">
+          <div className="card text-center">
+            <div className="card-body">
+            <span className="text-primary"> <FontAwesomeIcon icon={faNewspaper} size="2x" className="mb-2" /></span>
+              <h5 className="card-title">Announcements</h5>
+              <p className="card-text">Click here&gt;&gt;</p>
+            </div>
+          </div>
+        </Link>
+      </div> 
       </div>
     </div>
   );

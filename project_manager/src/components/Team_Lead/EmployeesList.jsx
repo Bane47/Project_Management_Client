@@ -73,7 +73,7 @@ const EmployeesList = ({
 
   return (
     <div>
-      <h4>Employees List</h4>
+      <h4 className="ms-3">Employees List</h4>
       <div className="row">
         <ToastContainer
           position="top-right"
@@ -89,7 +89,7 @@ const EmployeesList = ({
         />
         {employeeData.map((employee, index) => (
           <div key={index} className="col-md-4 mb-4">
-            <div className="card">
+            <div className="card  ms-4 mt-3">
               <div className="card-body">
                 <h5 className="card-title">Name: {employee.EmployeeName}</h5>
                 <p className="card-text">Designation: {employee.Designation}</p>

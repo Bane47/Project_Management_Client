@@ -1,18 +1,15 @@
-/* Authentication.css */
-
-/* Center the form */
 .center-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Adjust the height as needed */
-  position: relative; /* Add this to create a stacking context */
+  height: 100vh;
+  position: relative; 
 }
 
-/* Style the login button */
+/*login button */
 #login-btn {
   background-color: darkblue;
-  color: white; /* Text color */
+  color: white; 
   font-weight: bold;
   padding: 10px 20px;
   border: none;
@@ -20,7 +17,7 @@
   cursor: pointer;
 }
 
-/* Hover effect for .Rem-For class */
+/* Hover effect for .Rem-For  */
 .Rem-For:hover {
   color: red;
 }
@@ -29,21 +26,16 @@
 #home-bg-video {
   position: absolute;
   top: 0;
-  left: 0; /* Ensure it starts from the top-left corner */
+  left: 0;
   width: 100%;
-  height: 100%; /* Adjust to cover the entire viewport */
+  height: 100%; /* cover the entire viewport */
   object-fit: fill;
-  z-index: -1; /* Set the video below other content */
+  z-index: -1; /*video below other content */
 }
 
 /* Adjust card styling for better visibility */
 #signin-card {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Add a semi-transparent background */
+  background-color: rgba(255,255,255,0.1); 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better contrast */

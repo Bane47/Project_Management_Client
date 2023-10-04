@@ -74,7 +74,7 @@ const UpdateStatus = () => {
         taskId: selectedTaskId,
         reportText: reportText,
         teamLeadEmail: teamLeadEmails[selectedTaskId], // Include TeamLeadEmail based on selected task
-        userEmail:userEmail
+        userEmail: userEmail
       });
 
       // Close the modal
@@ -87,50 +87,54 @@ const UpdateStatus = () => {
   return (
     <div>
       <h2 className="ms-3 mt-3">Update Status</h2>
-      <table className="table table-bordered table-report ms-3 mt-3">
-        <thead>
-          <tr>
-            <th>Task Name</th>
-            <th>Task Description</th>
-            <th>Project Name</th>
-            <th>Due Date</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {taskData.map((task, index) => (
-            <tr key={index}>
-              <td>{task.taskName}</td>
-              <td>{task.taskDescription}</td>
-              <td>{task.projectName}</td>
-              <td>{new Date(task.dueDate).toLocaleDateString()}</td>
-              <td>
-                <div className="form-group">
-                  <select
-                    className="form-control"
-                    onChange={(e) => handleStatusChange(task._id, e.target.value)}
-                    value={task.status}
-                  >
-                    <option value="Started">Started</option>
-                    <option value="On Progress">On Progress</option>
-                    <option value="Delayed in Progress">Delayed in Progress</option>
-                    <option value="Completed">Completed</option>
-                  </select>
-                </div>
-              </td>
-              <td>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => openSendReportModal(task._id)}
-                >
-                  <FontAwesomeIcon icon={faEnvelope} /> Send Report
-                </button>
-              </td>
+      {taskData.length === 0 ? (
+        <p className="ms-3 mt-3">No Projects Found</p>
+      ) : (
+        <table className="table table-bordered table-report ms-3 mt-3">
+          <thead>
+            <tr>
+              <th>Task Name</th>
+              <th>Task Description</th>
+              <th>Project Name</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {taskData.map((task, index) => (
+              <tr key={index}>
+                <td>{task.taskName}</td>
+                <td>{task.taskDescription}</td>
+                <td>{task.projectName}</td>
+                <td>{new Date(task.dueDate).toLocaleDateString()}</td>
+                <td>
+                  <div className="form-group">
+                    <select
+                      className="form-control"
+                      onChange={(e) => handleStatusChange(task._id, e.target.value)}
+                      value={task.status}
+                    >
+                      <option value="Started">Started</option>
+                      <option value="On Progress">On Progress</option>
+                      <option value="Delayed in Progress">Delayed in Progress</option>
+                      <option value="Completed">Completed</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <button
+                    className="btn add-employeebtn text-white"
+                    onClick={() => openSendReportModal(task._id)}
+                  >
+                    <FontAwesomeIcon icon={faEnvelope} /> Send Report
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
       {/* SendReport Modal */}
       {showSendReportModal && (

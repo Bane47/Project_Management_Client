@@ -117,10 +117,10 @@ const Login = () => {
               theme="dark"
             />
             <form onSubmit={handleSubmit}>
-              {error && <p className="text-danger mb-3 ">{error}</p>}
+              {error && <p className="text-danger mb-3  "><b>{error}</b></p>}
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
-                  Email
+                 <strong> Email</strong>
                 </label>
                 <input
                   type="email"
@@ -132,7 +132,7 @@ const Login = () => {
               </div>
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">
-                  Password
+                <strong> Password</strong>
                 </label>
                 <input
                   type="password"
@@ -154,15 +154,15 @@ const Login = () => {
                       disabled={loading}
                     />
                     <label className="form-check-label" htmlFor="rememberMe">
-                      Remember Me
+                    <strong>  Remember Me</strong> 
                     </label>
                   </div>
                   <div className="col-sm-6 col-12">
                     <Link
                       to="/forgetpassword"
-                      className="text-decoration-none Rem-For"
+                      className="text-decoration-none text-black Rem-For"
                     >
-                      Forget Password?
+                    <strong> Forget Password?</strong> 
                     </Link>
                   </div>
                 </div>

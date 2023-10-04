@@ -43,7 +43,7 @@
 
 /* Style for the update profile button */
 .update-profile-button {
-  background-color: #007bff; /* Blue color (you can customize this) */
+  background-color: darkblue; /* Blue color (you can customize this) */
   color: #fff; /* White text color */
   padding: 10px 20px;
   border: none;

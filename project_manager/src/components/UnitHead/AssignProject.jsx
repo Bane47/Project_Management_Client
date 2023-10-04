@@ -143,121 +143,120 @@ const AssignProject = () => {
         theme="dark"
       />
       <h2 className="mb-3 mt-2 ms-5 ">Assign Project</h2>
-<div className="row border table-report ms-5">
-      <div className="col-md-6 ">
-        <div className="form  p-3">
-          {Object.keys(errors).length > 0 && (
-            <div className="error text-danger">
-              Please correct the following errors:
-              <ul>
-                {Object.values(errors).map((error, index) => (
-                  <li key={index}>{error}</li>
-                ))}
-              </ul>
+      <p className="alert alert-primary ms-5">
+        Note: The Project Details Will be Sent As Email Also!
+      </p>
+      <div className="row border table-report ms-5">
+        <div className="col-md-6 ">
+          <div className="form  p-3">
+            {Object.keys(errors).length > 0 && (
+              <div className="error text-danger">
+                Please correct the following errors:
+                <ul>
+                  {Object.values(errors).map((error, index) => (
+                    <li key={index}>{error}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div className="mb-3">
+              <label htmlFor="project-title" className="form-label">
+                Project Title
+              </label>
+              <input
+                type="text"
+                id="project-title"
+                className="form-control"
+                value={projectTitle}
+                onChange={(e) => setProjectTitle(e.target.value)}
+                disabled={loading}
+              />
             </div>
-          )}
-          <div className="mb-3">
-            <p className="text-primary">
-              Note: The Project Details Will be Sent to the Manager's MailID
-              also!
-            </p>
-            <label htmlFor="project-title" className="form-label">
-              Project Title
-            </label>
-            <input
-              type="text"
-              id="project-title"
-              className="form-control"
-              value={projectTitle}
-              onChange={(e) => setProjectTitle(e.target.value)}
-              disabled={loading}
-            />
+            <div className="mb-3">
+              <label htmlFor="project-description" className="form-label">
+                Project Description
+              </label>
+              <textarea
+                id="project-description"
+                className="form-control"
+                value={projectDescription}
+                onChange={(e) => setProjectDescription(e.target.value)}
+                rows="4"
+                disabled={loading}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="project-manager" className="form-label">
+                Project Manager
+              </label>
+              <select
+                className="form-select"
+                id="project-manager"
+                value={projectManager}
+                onChange={(e) => setProjectManager(e.target.value)}
+                disabled={loading}
+              >
+                <option value="">Select Manager</option>
+                {projectManagers.map((manager) => (
+                  <option key={manager._id} value={manager.EmployeeName}>
+                    {manager.EmployeeName}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="mb-3">
-            <label htmlFor="project-description" className="form-label">
-              Project Description
-            </label>
-            <textarea
-              id="project-description"
-              className="form-control"
-              value={projectDescription}
-              onChange={(e) => setProjectDescription(e.target.value)}
-              rows="4"
-              disabled={loading}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="project-manager" className="form-label">
-              Project Manager
-            </label>
-            <select
-              className="form-select"
-              id="project-manager"
-              value={projectManager}
-              onChange={(e) => setProjectManager(e.target.value)}
+        </div>
+
+        <div className="col-md-6 ">
+          <div className="form  p-3 ">
+            <div className="mb-3">
+              <label htmlFor="client-name" className="form-label">
+                Client Name
+              </label>
+              <input
+                type="text"
+                id="client-name"
+                className="form-control"
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
+                disabled={loading}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="client-email" className="form-label">
+                Client Email
+              </label>
+              <input
+                type="email"
+                id="client-email"
+                className="form-control"
+                value={clientEmail}
+                onChange={(e) => setClientEmail(e.target.value)}
+                disabled={loading}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="client-skype-id" className="form-label">
+                Client Skype ID
+              </label>
+              <input
+                type="text"
+                id="client-skype-id"
+                className="form-control"
+                value={clientSkypeId}
+                onChange={(e) => setClientSkypeId(e.target.value)}
+                disabled={loading}
+              />
+            </div>
+            <button
+              className="btn add-employeebtn text-white"
+              onClick={handleAssignProject}
               disabled={loading}
             >
-              <option value="">Select Manager</option>
-              {projectManagers.map((manager) => (
-                <option key={manager._id} value={manager.EmployeeName}>
-                  {manager.EmployeeName}
-                </option>
-              ))}
-            </select>
+              {loading ? "Assigning" : "Assign Project"}
+            </button>
           </div>
         </div>
-      </div>
-
-      <div className="col-md-6">
-        <div className="form  p-3 ">
-          <div className="mb-3">
-            <label htmlFor="client-name" className="form-label">
-              Client Name
-            </label>
-            <input
-              type="text"
-              id="client-name"
-              className="form-control"
-              value={clientName}
-              onChange={(e) => setClientName(e.target.value)}
-              disabled={loading}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="client-email" className="form-label">
-              Client Email
-            </label>
-            <input
-              type="email"
-              id="client-email"
-              className="form-control"
-              value={clientEmail}
-              onChange={(e) => setClientEmail(e.target.value)}
-              disabled={loading}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="client-skype-id" className="form-label">
-              Client Skype ID
-            </label>
-            <input
-              type="text"
-              id="client-skype-id"
-              className="form-control"
-              value={clientSkypeId}
-              onChange={(e) => setClientSkypeId(e.target.value)}
-              disabled={loading}
-            />
-          </div>
-          <button
-            className="btn add-employeebtn text-white"
-            onClick={handleAssignProject}
-            disabled={loading}
-          >
-            {loading ? "Assigning" : "Assign Project"}
-          </button>
-        </div>
-      </div>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import EmployeesList from './EmployeesList';
 
-const  TLAssignTasks = () => {
+const TLAssignTasks = () => {
   const user = sessionStorage.getItem('user');
   const decoded = jwtDecode(user);
   const TeamLeadEmail = decoded.email;
@@ -28,7 +28,7 @@ const  TLAssignTasks = () => {
       .get(`http://localhost:3001/get-assignedtasks-tl?userEmail=${TeamLeadEmail}`)
       .then((res) => {
         setProjectsData(res.data);
-        console.log("ipo",res.data);
+        console.log("ipo", res.data);
       })
       .catch((error) => {
         console.error(error);
@@ -65,24 +65,28 @@ const  TLAssignTasks = () => {
 
   return (
     <div>
-      <h4>Your Projects</h4>
-      <div className="row">
-        {projectsData.map((project, index) => (
-          <div key={index} className="col-md-4 mb-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Project Title: {project.projectTitle}</h5>
-                <button
-                  onClick={() => handleAddTaskClick(project.projectTitle, project.employeeName, project.employeeEmail)}
-                  className="btn add-employeebtn text-white"
-                >
-                  Assign Task
-                </button>
+      <h4 className='text-center mt-3'>Your Projects</h4>
+      {projectsData.length === 0 ? (
+        <p>No Projects Available</p>
+      ) : (
+        <div className="row">
+          {projectsData.map((project, index) => (
+            <div key={index} className="col-md-4 mb-4">
+              <div className="card ms-4 mt-3">
+                <div className="card-body">
+                  <h5 className="card-title">Project Title: {project.projectTitle}</h5>
+                  <button
+                    onClick={() => handleAddTaskClick(project.projectTitle, project.employeeName, project.employeeEmail)}
+                    className="btn add-employeebtn text-white"
+                  >
+                    Assign Task
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {selectedProject && (
         <EmployeesList
