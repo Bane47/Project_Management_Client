@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faUsers, faChartBar } from "@fortawesome/free-solid-svg-icons";
 import jwtDecode from "jwt-decode";
@@ -12,6 +12,7 @@ const TLSidebar = () => {
   const userEmail = decoded.email;
 
   const [projects, setProjects] = useState([]);
+  const [employeeData, setEmployeeData] = useState({});
 
   useEffect(() => {
     axios
@@ -50,6 +51,14 @@ const TLSidebar = () => {
     }
     return null;
   };
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/getEmp-dataOne?email=${userEmail}`)
+      .then((res) => {
+        setEmployeeData(res.data);
+      });
+  },[]);
 
   return (
     <div className="sidebar bg-light min-vh-100 p-0 p-lg-2">
@@ -91,7 +100,7 @@ const TLSidebar = () => {
             <FontAwesomeIcon icon={faHome} />
             Announcements
             {numAnnouncements > 0 && (
-              <span className="badge badge-pill badge-danger bg-primary ms-2">
+              <span className="badge add-employeebtn ms-2">
                 {numAnnouncements}
               </span>
             )}
@@ -103,6 +112,24 @@ const TLSidebar = () => {
             Settings
           </NavLink>
         </li>
+        {/* Profile Section */}
+      <div className="profile-section">
+        <div className="border-top mt-auto p-3">
+          <Link to="/settings" className="d-flex align-items-center">
+            <img
+              src={`http://localhost:3001/images/${employeeData.Profile}`}
+              className="rounded-circle me-2"
+              id="avatar"
+              alt="Avatar"
+              width="45"
+              height="40"
+            />
+            <p className="profile-name ms-2 text-black mb-0">
+              {employeeData.EmployeeName}
+            </p>
+          </Link>
+        </div>
+      </div>
       </ul>
     </div>
   );

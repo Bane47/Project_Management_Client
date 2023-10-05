@@ -4,8 +4,8 @@ import aboutimg from '../Assets/aboutimg.jpg'
 const AboutUs = () => {
   return (
     <div>
-        <section className="about-us" id="about-us">
-        <div className="container mt-5 mb-5" id="about-scroll">
+        <section className="about-us bg-white" id="about-us">
+        <div className="container mt-5 mb-5 " id="about-scroll">
           <div className="row">
             <div className="col-md-6 ">
               <h2>About Us</h2>

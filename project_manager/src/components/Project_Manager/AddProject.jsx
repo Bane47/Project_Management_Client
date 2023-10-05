@@ -124,15 +124,15 @@ const AddProject = () => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "colored",
+            theme: "dark",
           });
         })
         .catch((error) => {
           console.error("Error:", error);
-          // Handle the error, e.g., show an error message
+        
         })
         .finally(() => {
-          // Clear the form fields and errors regardless of success or error
+          // Clearing the form fields 
           setProjectTitle("");
           setStartDate("");
           setEndDate("");
@@ -160,7 +160,7 @@ const AddProject = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="colored"
+        theme="dark"
       />
       <h2 className="mb-5 ms-3 mt-2">Add Project</h2>
       <div className="row border table-report ms-3">
@@ -207,6 +207,7 @@ const AddProject = () => {
               className={`form-control ${errors.endDate ? "is-invalid" : ""}`}
               id="endDate"
               value={endDate}
+              min={today}
               onChange={(e) => setEndDate(e.target.value)}
             />
             {errors.endDate && (

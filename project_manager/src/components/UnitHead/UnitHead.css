@@ -57,7 +57,9 @@
   margin-top: 10px;
   display: block;
 }
-
+.profile-details{
+  background-color: lightgray;
+}
 
 @media (max-width: 576px) {
   .profile-details  {

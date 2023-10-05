@@ -80,6 +80,10 @@ const AddEmployee = () => {
 
     setErrors(newErrors);
 
+    if(newErrors){
+      setLoading(false)
+    }
+
     // Check if there are any validation errors
     return Object.keys(newErrors).length === 0;
   };
@@ -136,7 +140,10 @@ const AddEmployee = () => {
           if (error.response.data.message === "Email Already Registered") {
            
             setErrorMessage("Email Already Registered");
-          } else {
+          }else if (error.response.data.message === "Try Another Employee Pin") {
+            setErrorMessage("Try Another Employee Pin");
+          }
+           else {
             console.log(error.response.data.message);
             setErrorMessage("Error Adding Employee");
           }
@@ -164,7 +171,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="EmployeeName" className="form-label">
-                      Employee Name <span className="text-primary">*</span>
+                      Employee Name <span className="text-danger">*</span>
                     </label>
                     <input
                       type="text"
@@ -188,7 +195,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="EmployeeId" className="form-label">
-                      Employee ID<span className="text-primary">*</span>
+                      Employee ID<span className="text-danger">*</span>
                     </label>
                     <input
                       type="text"
@@ -216,7 +223,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="Email" className="form-label">
-                      Email <span className="text-primary">*</span>
+                      Email <span className="text-danger">*</span>
                     </label>
                     <input
                       type="email"
@@ -238,7 +245,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="Gender" className="form-label">
-                      Gender <span className="text-primary">*</span>
+                      Gender <span className="text-danger">*</span>
                     </label>
                     <select
                       className={`form-select ${
@@ -268,7 +275,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="Designation" className="form-label">
-                      Designation <span className="text-primary">*</span>
+                      Designation <span className="text-danger">*</span>
                     </label>
                     <select
                       className={`form-select ${
@@ -318,7 +325,7 @@ const AddEmployee = () => {
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="Domain1" className="form-label">
-                      Domain1* <span className="text-primary">*</span>
+                      Domain1* <span className="text-danger">*</span>
                     </label>
                     <select
                       className={`form-select ${

@@ -55,6 +55,7 @@ const Login = () => {
         console.log(roleIdToken);
         localStorage.setItem("roleId", roleIdToken);
         sessionStorage.setItem("user", res.data.userToken);
+        
 
         //accessToken sent from the backend
         const accessToken = res.data.accessToken;
@@ -117,7 +118,7 @@ const Login = () => {
               theme="dark"
             />
             <form onSubmit={handleSubmit}>
-              {error && <p className="text-danger mb-3  "><b>{error}</b></p>}
+              {error && <p className="text-danger mb-3 alert alert-danger  "><b>{error}</b></p>}
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
                  <strong> Email</strong>

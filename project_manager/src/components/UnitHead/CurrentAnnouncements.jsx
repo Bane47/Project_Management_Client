@@ -23,7 +23,7 @@ const CurrentAnnouncements = () => {
     <div>
       <h1 className="mt-4 mb-4 ms-3">Announcements</h1>
       {receivedMessages.length === 0 ?(
-        <p className="alert alert-primary w-75 ms-3">No Announcements Made!</p>
+        <p className="alert alert-info w-75 ms-3">No Announcements Made!</p>
       ):(
       <div className="row">
         {receivedMessages.map((message) => (

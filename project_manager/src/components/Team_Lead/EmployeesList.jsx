@@ -74,7 +74,8 @@ const EmployeesList = ({
   return (
     <div>
       <h4 className="ms-3">Employees List</h4>
-      <div className="row">
+      <p className="alert alert-info w-75 ms-3">The Tasks Will Be Also Sent to the Employee MailID Also!</p>
+      <div className="row me-3">
         <ToastContainer
           position="top-right"
           autoClose={2000}

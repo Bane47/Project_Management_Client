@@ -1,11 +1,8 @@
 
-.sidebar {
-  /* min-height: 88.7vh; */
+.sidebar{
   min-height: 100vh;
-  /* height: 100%; */
-  ;
+  background-color: rgb(250, 250, 250) !important;
 }
-
 
 .sidebar h2 {
   font-size: 24px;
@@ -38,15 +35,20 @@
 #side-main {
   overflow: hidden !important;
 }
-
-#user-text {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+.profile-section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px; /* Add padding for spacing */
+  width: 15%;
 }
 
 
+
+
 .active{
-  background-color: gray!important;
+  background-color: lightgray!important;
   border-radius: 5px;
 }
 @media (max-width: 767px) {

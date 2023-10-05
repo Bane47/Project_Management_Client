@@ -83,8 +83,8 @@ const Settings = () => {
       />
       <h2 className="text-center">User Profile</h2>
       {userData && (
-        <div className="profile-details vw-75 row justify-content-center align-items-center card d-flex flex-row p-md-5">
-          <div className="col-12 col-md-5 col-lg-4 text-center border border-1">
+        <div className="profile-details vw-75 row justify-content-center align-items-center card d-flex flex-row p-md-5 border-0 shadow -lg">
+          <div className="col-12 col-md-5 col-lg-4 text-center ">
             <div className="profile-image-container p-3">
               <img
                 src={`http://localhost:3001/images/${userData.Profile}`}
@@ -123,7 +123,7 @@ const Settings = () => {
                 <strong>Employee Name:</strong> {userData.EmployeeName}
               </p>
               <p>
-                <strong>Email:</strong> {userData.Email}
+                <strong>Designation:</strong> {userData.Designation}
               </p>
               <p>
                 <strong>Domain 1:</strong> {userData.Domain1 || "N/A"}

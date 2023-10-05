@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./homepage.css";
+import "./HomePage.css";
+import { Carousel } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGear,
@@ -13,124 +14,148 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <header className="header">
-        <h1>Welcome to Our World of Solutions</h1>
+        <h1>Offshore Software Development Company CG-VAK’s TechStack</h1>
         <p>Your Gateway to Innovation</p>
       </header>
-
-      <section className="hero">
-        <div className="hero-content">
+      <section className="hero ">
+        <div className="hero-content text-center">
           <h2>Unlock the Power of Technology</h2>
           <p>Discover endless possibilities with our cutting-edge solutions.</p>
-          <Link to="/login" className="btn btn-primary">
+          <p>Learn, innovate, and grow with us!</p>
+          <p>Join our community of tech enthusiasts today.</p>
+          <Link to="/login" className="btn add-employeebtn text-white">
             Explore More &gt;&gt;
           </Link>
         </div>
-        <div className="hero-image ">
-          <img
-            src="https://www.useresponse.com/blog/wp-content/uploads/2020/04/featured-1024x427.png"
-            alt="homepage"
-            id="img1"
-          />
-        </div>
       </section>
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-md-4">
+            <h3>Project Management</h3>
+            <p className="mt-5">
+              Effective project management is the key to successful project
+              execution. Our experts are here to help you plan, organize, and
+              execute your projects efficiently.
+            </p>
+            <p>
+              The CGVAK team as a part of its CSR activities visited the Udavum
+              Karangal premises in Chennai which was devastated by the floods.
+            </p>
+            <p>
+              As a part of the CSR activity, the team at CGVAK were privileged
+              to celebrate this special Diwali of 2015 with some wonderful
+              children from a nearby home in Coimbatore.
+            </p>
+          </div>
 
-      <section className="testimonial">
-        <div className="testimonial-text">
-          <h3>"Technology was the key to my freedom"</h3>
+          <div className="col-md-8">
+            <Carousel>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="First slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Second slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src="https://img.freepik.com/free-vector/set-anniversary-logotype-emblem-set_1017-17937.jpg?w=996&t=st=1696520620~exp=1696521220~hmac=78b16819cb8b7e68370f53db88a1875165b48febcf681d52389395bd6cfd2695"
+                  alt="Third slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src="https://images.pexels.com/photos/7439129/pexels-photo-7439129.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Fourth slide"
+                />
+              </Carousel.Item>
+            </Carousel>
+          </div>
         </div>
-      </section>
+      </div>
 
       <section className="features">
         <div className="feature">
           <div className="feature-icon">
-            <FontAwesomeIcon icon={faGear} />
+            <FontAwesomeIcon icon={faGear} className="big-icon" />
           </div>
           <h4>Innovative Solutions</h4>
           <p>Experience the latest in technology.</p>
         </div>
         <div className="feature">
           <div className="feature-icon">
-            <FontAwesomeIcon icon={faPeopleGroup} />
+            <FontAwesomeIcon icon={faPeopleGroup} className="big-icon" />
           </div>
           <h4>Community Support</h4>
           <p>Join a vibrant community of tech enthusiasts.</p>
         </div>
         <div className="feature">
           <div className="feature-icon">
-            <FontAwesomeIcon icon={faTerminal} />
+            <FontAwesomeIcon icon={faTerminal} className="big-icon" />
           </div>
           <h4>Coding Made Easy</h4>
           <p>Learn to code with our user-friendly tutorials.</p>
         </div>
       </section>
-
-      <AboutUs />
-      <section className="achievements">
-        <div className="container">
-          <h2 className="text-center">Our Achievements</h2>
-          <div className="row justify-content-center">
-            <div className="col-md-4">
-              <div className="achievement-card mb-3">
-                <img
-                  src="https://tse3.mm.bing.net/th?id=OIP.EGfs9cqvFG6mNQUzYCCrFwHaHa&pid=Api&P=0&h=180"
-                  alt="Achievement 1"
-                  className="img-fluid rounded w-50 "
-                />
-                <h5 className="mt-3">Best Company 2021</h5>
-                <p className="fs-6">Awarded by Rotary Club</p>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="achievement-card mb-3">
-                <img
-                  src="https://media1.tenor.com/images/c009e8f40ed27fb4b6c70d0437001d2c/tenor.gif?itemid=8965716"
-                  alt="Achievement 2"
-                  className="img-fluid rounded w-50"
-                />
-                <h5 className="mt-3">Endurance Award</h5>
-                <p className="fs-6">Awarded by TN Government</p>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="achievement-card">
-                <img
-                  src="https://dickstrophies.com/images/p500x500/gold-accented-crystal-awards-32kvg7.png"
-                  alt="Achievement 3"
-                  className="img-fluid rounded w-50"
-                />
-                <h5 className="mt-3">Best Company 2022</h5>
-                <p className="fs-6">Awarded by Rotary Club</p>
-              </div>
-            </div>
+      <section className="company-cards">
+  <div className="container">
+    <h2 className="text-center">Our Company</h2>
+    <div className="row justify-content-center">
+      <div className="col-md-4">
+        <div className="card company-card card-1">
+          <img
+            src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Company 1"
+            className="card-img-top w-75"
+          />
+          <div className="card-body">
+            <h5 className="card-title">Company Name 1</h5>
+            <p className="card-text">Description of Company 1</p>
           </div>
         </div>
-      </section>
-
-      <section className="cta">
-        <p>Ready to embark on a tech journey?</p>
-        <Link to="/login" className="btn btn-primary">
-          Get Started &gt;&gt;
-        </Link>
-      </section>
-      <footer className="footer footer-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 mt-5">
-              <p>&copy; 2023 Employees_portal</p>
-            </div>
-            <div className="col-md-6">
-              <p className="text-end footer-contact">
-                Contact Us:
-                <a href="mailto:contact@example.com">cgvakindia@gmail.com</a>
-              </p>
-              <p className="text-end footer-contact footer-address">
-                Phone: +1 (123) 456-7890
-                <span>Address: 123 Street, Employee City, Coimbatore</span>
-              </p>
-            </div>
+      </div>
+      <div className="col-md-4">
+        <div className="card company-card card-2">
+          <img
+            src="https://images.pexels.com/photos/16129728/pexels-photo-16129728/free-photo-of-man-coding-on-pc.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Company 2"
+            className="card-img-top w-75"
+          />
+          <div className="card-body">
+            <h5 className="card-title">Company Name 2</h5>
+            <p className="card-text">Description of Company 2</p>
           </div>
         </div>
-      </footer>
+      </div>
+      <div className="col-md-4">
+        <div className="card company-card card-3">
+          <img
+            src="https://images.pexels.com/photos/12899188/pexels-photo-12899188.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Company 3"
+            className="card-img-top w-75"
+          />
+          <div className="card-body">
+            <h5 className="card-title">Company Name 3</h5>
+            <p className="card-text">Description of Company 3</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
     </div>
   );
 };

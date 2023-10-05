@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Announcement = () => {
   const [message, setMessage] = useState("");
@@ -16,7 +18,16 @@ const Announcement = () => {
         .post("http://localhost:3001/Emp-Message", data)
         .then((res) => {
           setMessage("");
-          window.location.reload();
+          toast("Announcement Successful!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -54,20 +65,32 @@ const Announcement = () => {
 
   return (
     <div className="container mt-4">
-      <div className="row d-flex flex-row">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <div className="row d-flex flex-row me-4 ms-3 ">
         <div className="col-7">
-        <h2>Make an Announcement to Employees</h2>
+          <h2>Make an Announcement to Employees</h2>
         </div>
         <div className="col-5">
-        <Link
-          to="/history"
-          className="btn add-employeebtn text-white w-25 float-end me-3"
-        >
-          History
-        </Link>
+          <Link
+            to="/history"
+            className="btn add-employeebtn text-white w-25 float-end me-3"
+          >
+            History
+          </Link>
         </div>
       </div>
-      <div className="mb-3">
+      <div className="mb-3 mt-4 ms-3">
         <label htmlFor="message" className="form-label">
           Message
         </label>
@@ -80,15 +103,18 @@ const Announcement = () => {
           onChange={(e) => setMessage(e.target.value)}
         ></textarea>
       </div>
-      <button className="btn btn-primary" onClick={sendMessage}>
+      <button
+        className="btn add-employeebtn text-white ms-3"
+        onClick={sendMessage}
+      >
         Send
       </button>
 
       {receivedMessage.length > 0 && (
-        <div className="mt-4">
-          <h3>Announcement:</h3>
+        <div className="mt-4 ms-3 me-3">
+          <h3>Current Announcements:</h3>
           {receivedMessage.map((item) => (
-            <div key={item._id} className="alert alert-info" role="alert">
+            <div key={item._id} className="alert alert-info w-100 " role="alert">
               {item.message}
               <button
                 className="btn btn-danger btn-sm float-end"

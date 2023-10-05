@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
 
 const TaskStatus = () => {
   const [taskData, setTaskData] = useState([]);
@@ -67,6 +69,7 @@ const TaskStatus = () => {
         pauseOnHover
         theme="dark"
       />
+      <Tooltip id="my-tooltip" />
       <div className="row">
         <div className="col-7">
           <h1 className="ms-3 mt-3">Task Status</h1>
@@ -111,6 +114,7 @@ const TaskStatus = () => {
                   ) : (
                     <button
                       className="btn btn-danger btn-sm"
+                      data-tooltip-id="my-tooltip" data-tooltip-content="Hello world!"
                       disabled // Disable the button
                     >
                       <FontAwesomeIcon icon={faTrash} /> Delete

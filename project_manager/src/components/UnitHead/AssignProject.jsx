@@ -149,19 +149,9 @@ const AssignProject = () => {
       <div className="row border table-report ms-5">
         <div className="col-md-6 ">
           <div className="form  p-3">
-            {Object.keys(errors).length > 0 && (
-              <div className="error text-danger">
-                Please correct the following errors:
-                <ul>
-                  {Object.values(errors).map((error, index) => (
-                    <li key={index}>{error}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
             <div className="mb-3">
               <label htmlFor="project-title" className="form-label">
-                Project Title
+                <strong> Project Title</strong>
               </label>
               <input
                 type="text"
@@ -171,10 +161,13 @@ const AssignProject = () => {
                 onChange={(e) => setProjectTitle(e.target.value)}
                 disabled={loading}
               />
+              {errors.projectTitle && (
+                <div className="text-danger">{errors.projectTitle}</div>
+              )}
             </div>
             <div className="mb-3">
               <label htmlFor="project-description" className="form-label">
-                Project Description
+                <strong> Project Description</strong>
               </label>
               <textarea
                 id="project-description"
@@ -184,10 +177,13 @@ const AssignProject = () => {
                 rows="4"
                 disabled={loading}
               />
+              {errors.projectDescription && (
+                <div className="text-danger">{errors.projectDescription}</div>
+              )}
             </div>
             <div className="mb-3">
               <label htmlFor="project-manager" className="form-label">
-                Project Manager
+                <strong> Project Manager</strong>
               </label>
               <select
                 className="form-select"
@@ -196,13 +192,16 @@ const AssignProject = () => {
                 onChange={(e) => setProjectManager(e.target.value)}
                 disabled={loading}
               >
-                <option value="">Select Manager</option>
+                <option value=""><strong>Select Manager</strong></option>
                 {projectManagers.map((manager) => (
                   <option key={manager._id} value={manager.EmployeeName}>
                     {manager.EmployeeName}
                   </option>
                 ))}
               </select>
+              {errors.projectManager && (
+                <div className="text-danger">{errors.projectManager}</div>
+              )}
             </div>
           </div>
         </div>
@@ -211,7 +210,7 @@ const AssignProject = () => {
           <div className="form  p-3 ">
             <div className="mb-3">
               <label htmlFor="client-name" className="form-label">
-                Client Name
+                <strong>Client Name</strong>
               </label>
               <input
                 type="text"
@@ -221,10 +220,13 @@ const AssignProject = () => {
                 onChange={(e) => setClientName(e.target.value)}
                 disabled={loading}
               />
+              {errors.clientName && (
+                <div className="text-danger">{errors.clientName}</div>
+              )}
             </div>
             <div className="mb-3">
               <label htmlFor="client-email" className="form-label">
-                Client Email
+                <strong> Client Email</strong>
               </label>
               <input
                 type="email"
@@ -234,10 +236,13 @@ const AssignProject = () => {
                 onChange={(e) => setClientEmail(e.target.value)}
                 disabled={loading}
               />
+              {errors.clientEmail && (
+                <div className="text-danger">{errors.clientEmail}</div>
+              )}
             </div>
             <div className="mb-3">
               <label htmlFor="client-skype-id" className="form-label">
-                Client Skype ID
+                <strong> Client Skype ID</strong>
               </label>
               <input
                 type="text"
@@ -247,13 +252,24 @@ const AssignProject = () => {
                 onChange={(e) => setClientSkypeId(e.target.value)}
                 disabled={loading}
               />
+              {errors.clientSkypeId && (
+                <div className="text-danger">{errors.clientSkypeId}</div>
+              )}
             </div>
             <button
               className="btn add-employeebtn text-white"
               onClick={handleAssignProject}
               disabled={loading}
             >
-              {loading ? "Assigning" : "Assign Project"}
+              
+               {loading ? (
+              <>
+                <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Assigning...
+              </>
+            ) : (
+              "Assign Project"
+            )}
             </button>
           </div>
         </div>

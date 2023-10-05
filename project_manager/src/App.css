@@ -4,6 +4,7 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
+ 
 }
 *{
   font-family: 'Poppins', sans-serif;
@@ -17,6 +18,9 @@ body {
 
 .add-employeebtn{
   background-color: darkblue !important;
+}
+.fontawesome-color{
+  color: darkblue;
 }
 *{
   text-decoration: none !important;

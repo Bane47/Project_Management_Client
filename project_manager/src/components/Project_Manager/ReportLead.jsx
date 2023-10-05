@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import "./PM.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ReportLead = () => {
   const user = sessionStorage.getItem("user");
@@ -17,7 +19,18 @@ const ReportLead = () => {
         status: newStatus,
       })
       .then((res) => {
-        // Update the tasks state with the updated data
+
+        toast.success("Status Updated Successfully", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        
         setTasks((prevTasks) =>
           prevTasks.map((task) => {
             if (task._id === taskId) {
@@ -46,6 +59,18 @@ const ReportLead = () => {
 
   return (
     <div>
+       <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <h4 className="ms-3 mt-2 mb-3">Project Status</h4>
       {tasks.length === 0 ? (
         <p className="ms-4 mt-3">No Projects Available</p>

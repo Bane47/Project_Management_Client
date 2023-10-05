@@ -3,6 +3,8 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UpdateStatus = () => {
   const user = sessionStorage.getItem("user");
@@ -17,10 +19,14 @@ const UpdateStatus = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/getTask-Data?userEmail=${userEmail}&deleted=false`) // Add the deleted=false query parameter
+      .get(
+        `http://localhost:3001/getTask-Data?userEmail=${userEmail}&deleted=false`
+      ) // Add the deleted=false query parameter
       .then((res) => {
         // Filter out tasks where deleted is true
-        const filteredTaskData = res.data.taskData.filter((task) => !task.deleted);
+        const filteredTaskData = res.data.taskData.filter(
+          (task) => !task.deleted
+        );
         setTaskData(filteredTaskData);
         const teamLeadEmailsObj = {};
         filteredTaskData.forEach((task) => {
@@ -33,7 +39,6 @@ const UpdateStatus = () => {
         console.log(err);
       });
   }, [userEmail]);
-  
 
   const handleStatusChange = async (taskId, status) => {
     try {
@@ -41,7 +46,16 @@ const UpdateStatus = () => {
       await axios.put(`http://localhost:3001/updateTaskStatus/${taskId}`, {
         status: status,
       });
-
+      toast('Task Status Updated to Team Lead!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
       // Update the UI with the new status
       const updatedTaskData = taskData.map((task) => {
         if (task._id === taskId) {
@@ -74,7 +88,7 @@ const UpdateStatus = () => {
         taskId: selectedTaskId,
         reportText: reportText,
         teamLeadEmail: teamLeadEmails[selectedTaskId], // Include TeamLeadEmail based on selected task
-        userEmail: userEmail
+        userEmail: userEmail,
       });
 
       // Close the modal
@@ -86,6 +100,18 @@ const UpdateStatus = () => {
 
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <h2 className="ms-3 mt-3">Update Status</h2>
       {taskData.length === 0 ? (
         <p className="ms-3 mt-3">No Projects Found</p>
@@ -112,12 +138,16 @@ const UpdateStatus = () => {
                   <div className="form-group">
                     <select
                       className="form-control"
-                      onChange={(e) => handleStatusChange(task._id, e.target.value)}
+                      onChange={(e) =>
+                        handleStatusChange(task._id, e.target.value)
+                      }
                       value={task.status}
                     >
                       <option value="Started">Started</option>
                       <option value="On Progress">On Progress</option>
-                      <option value="Delayed in Progress">Delayed in Progress</option>
+                      <option value="Delayed in Progress">
+                        Delayed in Progress
+                      </option>
                       <option value="Completed">Completed</option>
                     </select>
                   </div>
@@ -138,7 +168,12 @@ const UpdateStatus = () => {
 
       {/* SendReport Modal */}
       {showSendReportModal && (
-        <div className="modal" tabIndex="-1" role="dialog" style={{ display: "block" }}>
+        <div
+          className="modal"
+          tabIndex="-1"
+          role="dialog"
+          style={{ display: "block" }}
+        >
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
