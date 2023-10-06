@@ -38,7 +38,7 @@
 /* Add a semi-transparent overlay to the background image */
 .hero::before {
   content: "";
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
   left: 0;
@@ -61,12 +61,9 @@
   font-size: 1.5rem;
   color: #fff;
 }
-
-/* Style the "Explore More" button */
 .hero .btn-primary {
   font-size: 1.2rem;
   padding: 10px 20px;
-  background-color: #007bff; /* Button background color */
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -75,17 +72,15 @@
 }
 
 .hero .btn-primary:hover {
-  background-color: #0056b3; /* Hover state background color */
+  background-color: #0056b3;
 }
 
-/* Additional content style */
 .extra-content {
   margin-top: 2rem;
   font-size: 1.2rem;
   color: #fff;
 }
 
-/* Center the hero content vertically and horizontally */
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -94,29 +89,25 @@
   height: 100%;
 }
 
-/* Center text horizontally */
 .text-center {
   text-align: center;
 }
-
-
 
 /* Features Section */
 .features {
   display: flex;
   justify-content: space-around;
-  align-items: center; /* Center vertically */
+  align-items: center;
   padding: 4rem;
 }
 
 .feature {
   text-align: center;
-  padding: 2rem; /* Add padding for spacing */
-  border-radius: 10px; /* Add border-radius for rounded corners */
+  padding: 2rem;
+  border-radius: 10px;
   transition: transform 0.2s ease-in-out;
 }
 
-/* Increase icon size */
 .big-icon {
   font-size: 3rem;
   color: darkblue;
@@ -127,27 +118,66 @@
   margin: 1rem 0;
 }
 
-/* Reduce the height of the carousel */
 .carousel {
-  max-height: 400px; /* Adjust the height as needed */
+  max-height: 400px;
 }
 
-/* Center the carousel content vertically */
-
-
-/* Style the carousel images */
 .carousel-item img {
-  object-fit: cover; /* Ensure the image covers the entire carousel item */
-  max-height: 100%; /* Make sure the image fits within the carousel item */
+  object-fit: cover;
+  max-height: 100%;
   width: 100%;
-  height: 400px; /* Adjust the height as needed */
+  height: 400px;
 }
 
+.company-cards {
+  margin-top: -50px;
+}
 
-
-
-/* Ensure all company cards have equal height */
 .company-card {
-  height: 60%;
+  height: 100%;
+  border: 1px solid #ddd;
+  /* margin: 20px; */
+  transition: transform 0.2s ease-in-out;
 }
 
+.company-card-img {
+  height: 340px;
+  object-fit: cover;
+}
+
+.company-cards .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.company-card .card-title {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.company-card .card-text {
+  margin-bottom: 1rem;
+}
+
+.company-card:hover {
+  transform: scale(1.03);
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

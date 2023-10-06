@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import videobg from '../Assets/loginbg2.mp4';
+import videobg from "../Assets/loginbg2.mp4";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -52,16 +52,14 @@ const Login = () => {
         setLoading(true);
 
         const roleIdToken = res.data.roleIdToken;
-        console.log(roleIdToken);
         localStorage.setItem("roleId", roleIdToken);
         sessionStorage.setItem("user", res.data.userToken);
-        
 
         //accessToken sent from the backend
         const accessToken = res.data.accessToken;
         Cookies.set("accessToken", accessToken);
 
-        // Set the refreshToken as a separate cookie
+        // refreshToken as a separate cookie
         const refreshToken = res.data.refreshToken;
         Cookies.set("refreshToken", refreshToken);
 
@@ -102,8 +100,14 @@ const Login = () => {
         </video>
       </div>
       <div className="container mt-5">
-        <div className="row justify-content-center align-items-center" id="forget-pass">
-          <div className="card col-md-6 col-lg-4 p-5 rounded shadow" id="signin-card">
+        <div
+          className="row justify-content-center align-items-center"
+          id="forget-pass"
+        >
+          <div
+            className="card col-md-6 col-lg-4 p-5 rounded shadow"
+            id="signin-card"
+          >
             <h2 className="mb-4 text-center">SignIn</h2>
             <ToastContainer
               position="top-center"
@@ -118,10 +122,14 @@ const Login = () => {
               theme="dark"
             />
             <form onSubmit={handleSubmit}>
-              {error && <p className="text-danger mb-3 alert alert-danger  "><b>{error}</b></p>}
+              {error && (
+                <p className="text-danger mb-3 alert alert-danger  ">
+                  <b>{error}</b>
+                </p>
+              )}
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
-                 <strong> Email</strong>
+                  <strong> Email</strong>
                 </label>
                 <input
                   type="email"
@@ -133,7 +141,7 @@ const Login = () => {
               </div>
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">
-                <strong> Password</strong>
+                  <strong> Password</strong>
                 </label>
                 <input
                   type="password"
@@ -155,7 +163,7 @@ const Login = () => {
                       disabled={loading}
                     />
                     <label className="form-check-label" htmlFor="rememberMe">
-                    <strong>  Remember Me</strong> 
+                      <strong> Remember Me</strong>
                     </label>
                   </div>
                   <div className="col-sm-6 col-12">
@@ -163,7 +171,7 @@ const Login = () => {
                       to="/forgetpassword"
                       className="text-decoration-none text-black Rem-For"
                     >
-                    <strong> Forget Password?</strong> 
+                      <strong> Forget Password?</strong>
                     </Link>
                   </div>
                 </div>

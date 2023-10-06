@@ -142,11 +142,11 @@ const AssignProject = () => {
         pauseOnHover
         theme="dark"
       />
-      <h2 className="mb-3 mt-2 ms-5 ">Assign Project</h2>
-      <p className="alert alert-primary ms-5">
+      <h2 className="mb-3 mt-2 ms-3 ">Assign Project</h2>
+      <p className="alert alert-primary ms-3">
         Note: The Project Details Will be Sent As Email Also!
       </p>
-      <div className="row border table-report ms-5">
+      <div className="row border table-report ms-3">
         <div className="col-md-6 ">
           <div className="form  p-3">
             <div className="mb-3">

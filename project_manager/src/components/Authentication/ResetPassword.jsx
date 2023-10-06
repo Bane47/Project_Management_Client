@@ -32,13 +32,15 @@ const ResetPassword = () => {
         .then((res) => {
           if (res.data.Status === "Success") {
             setResetMsg(true);
+          
           } else {
-            setError("An error occurred. Please try again."); // Set error message for unsuccessful reset
+            setError("An error occurred. Please try again."); 
+            console.log(res.data.Status);
           }
         })
         .catch((error) => {
           console.error(error);
-          setError("An error occurred. Please try again."); // Set error message for any network error
+          setError("An error occurred. Please try again."); 
         });
     } else {
       setError("Passwords don't match");

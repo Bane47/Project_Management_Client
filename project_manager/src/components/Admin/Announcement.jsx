@@ -28,6 +28,7 @@ const Announcement = () => {
             progress: undefined,
             theme: "dark",
           });
+          handleGetAnnouncementData();
         })
         .catch((error) => {
           console.log(error);
@@ -37,7 +38,7 @@ const Announcement = () => {
     }
   };
 
-  useEffect(() => {
+  const handleGetAnnouncementData = () => {
     axios
       .get("http://localhost:3001/Get-Message")
       .then((res) => {
@@ -50,7 +51,12 @@ const Announcement = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  useEffect(() => {
+    handleGetAnnouncementData();
   }, []);
+
   const deleteMessage = (messageId) => {
     axios
       .delete(`http://localhost:3001/delete-message/${messageId}`)
@@ -59,8 +65,10 @@ const Announcement = () => {
           (item) => item._id !== messageId
         );
         setReceivedMessage(updatedMessages);
-        console.log("message deleted of id", messageId);
-      });
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
   };
 
   return (
@@ -78,13 +86,13 @@ const Announcement = () => {
         theme="dark"
       />
       <div className="row d-flex flex-row me-4 ms-3 ">
-        <div className="col-7">
+        <div className="col-md-7">
           <h2>Make an Announcement to Employees</h2>
         </div>
-        <div className="col-5">
+        <div className="col-md-5">
           <Link
             to="/history"
-            className="btn add-employeebtn text-white w-25 float-end me-3"
+            className="btn add-employeebtn text-white float-end me-3"
           >
             History
           </Link>
@@ -114,7 +122,11 @@ const Announcement = () => {
         <div className="mt-4 ms-3 me-3">
           <h3>Current Announcements:</h3>
           {receivedMessage.map((item) => (
-            <div key={item._id} className="alert alert-info w-100 " role="alert">
+            <div
+              key={item._id}
+              className="alert alert-info w-100 "
+              role="alert"
+            >
               {item.message}
               <button
                 className="btn btn-danger btn-sm float-end"

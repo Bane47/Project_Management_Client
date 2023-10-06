@@ -68,6 +68,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  bottom: 0%;
+  left: 48%;
 }
 
 .pagination button {
@@ -85,9 +88,19 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1400px) {
   .custom-table {
     display: block;
     overflow: auto;
+  }
+}
+@media (max-width: 768px) {
+  .pagination {
+    position: fixed;
+    bottom: 0;
+    left: 0%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

@@ -19,7 +19,6 @@ const ReportLead = () => {
         status: newStatus,
       })
       .then((res) => {
-
         toast.success("Status Updated Successfully", {
           position: "top-right",
           autoClose: 2000,
@@ -30,22 +29,15 @@ const ReportLead = () => {
           progress: undefined,
           theme: "dark",
         });
-        
-        setTasks((prevTasks) =>
-          prevTasks.map((task) => {
-            if (task._id === taskId) {
-              return { ...task, status: newStatus };
-            }
-            return task;
-          })
-        );
+
+        fetchAssignedTasks();
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
-  useEffect(() => {
+  const fetchAssignedTasks = () => {
     axios
       .get(`http://localhost:3001/get-assignedtasks-pm?userEmail=${userEmail}`)
       .then((res) => {
@@ -55,11 +47,15 @@ const ReportLead = () => {
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  useEffect(() => {
+    fetchAssignedTasks();
   }, [userEmail]);
 
   return (
     <div>
-       <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={2000}
         hideProgressBar
@@ -75,7 +71,7 @@ const ReportLead = () => {
       {tasks.length === 0 ? (
         <p className="ms-4 mt-3">No Projects Available</p>
       ) : (
-        <table className="table table-striped border table-report ms-3">
+        <table className="table custom-table table-striped border table-report ms-3">
           <thead>
             <tr>
               <th>Project Title</th>
@@ -90,7 +86,7 @@ const ReportLead = () => {
                 <td>{task.projectDescription}</td>
                 <td>
                   <select
-                    className="form-select"
+                    className="form-select "
                     value={task.status || ""}
                     onChange={(e) =>
                       handleStatusChange(task._id, e.target.value)
@@ -98,7 +94,11 @@ const ReportLead = () => {
                   >
                     <option value="Received">Received</option>
                     <option value="Started">Started</option>
+                    <option value="Assigned to Team_Lead">
+                      Assigned to Team_Lead
+                    </option>
                     <option value="InProgress">InProgress</option>
+                    <option value="DeleyInProgress">Delay In Progress</option>
                     <option value="Completed">Completed</option>
                   </select>
                 </td>

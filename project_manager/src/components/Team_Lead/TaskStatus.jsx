@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 
 const TaskStatus = () => {
   const [taskData, setTaskData] = useState([]);
@@ -71,22 +71,28 @@ const TaskStatus = () => {
       />
       <Tooltip id="my-tooltip" />
       <div className="row">
-        <div className="col-7">
+        <div className="col-12">
           <h1 className="ms-3 mt-3">Task Status</h1>
-        </div>
-        <div className="col-5 mt-3">
-          <Link
-            to="/completedtasks"
-            className="btn add-employeebtn text-white float-end me-5"
-          >
-            Completed Tasks
-          </Link>
+          <div className="d-flex justify-content-center justify-content-md-end">
+            <Link
+              to="/tlassigntasks"
+              className="btn add-employeebtn my-auto text-white ms-2 px-4"
+            >
+              AssignTasks
+            </Link>
+            <Link
+              to="/completedtasks"
+              className="btn btn-secondary text-white ms-md-2 me-md-5"
+            >
+              Completed Tasks
+            </Link>
+          </div>
         </div>
       </div>
       {taskData.length === 0 ? (
         <p className="ms-3 mt-3">No Tasks Available</p>
       ) : (
-        <table className="table table-bordered table-report ms-3 mt-3">
+        <table className="table custom-table table-bordered table-report ms-3 mt-3">
           <thead>
             <tr>
               <th>Task Name</th>
@@ -104,7 +110,7 @@ const TaskStatus = () => {
                 <td>{task.employeeName}</td>
                 <td>{task.status}</td>
                 <td>
-                  {task.status === "Completed" ? ( // Conditionally render the button
+                  {task.status === "Completed" ? (
                     <button
                       className="btn btn-danger btn-sm"
                       onClick={() => handleDelete(task._id)}
@@ -114,8 +120,9 @@ const TaskStatus = () => {
                   ) : (
                     <button
                       className="btn btn-danger btn-sm"
-                      data-tooltip-id="my-tooltip" data-tooltip-content="Hello world!"
-                      disabled // Disable the button
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content="Hello world!"
+                      disabled
                     >
                       <FontAwesomeIcon icon={faTrash} /> Delete
                     </button>

@@ -1,6 +1,7 @@
 import React from 'react';
 
-const TaskModal = ({ showModal, closeModal, formData, handleInputChange, handleAddTask }) => {
+const TaskModal = ({ showModal, closeModal, formData, handleInputChange, handleAddTask,loading }) => {
+  
   return (
     <div
       className={`modal ${showModal ? 'show' : ''}`}
@@ -59,6 +60,7 @@ const TaskModal = ({ showModal, closeModal, formData, handleInputChange, handleA
                 name="taskName"
                 value={formData.taskName}
                 onChange={handleInputChange}
+                disabled={loading}
               />
             </div>
             <div className="form-group">
@@ -69,6 +71,7 @@ const TaskModal = ({ showModal, closeModal, formData, handleInputChange, handleA
                 name="taskDescription"
                 value={formData.taskDescription}
                 onChange={handleInputChange}
+                disabled={loading}
               />
             </div>
             <div className="form-group">
@@ -80,6 +83,7 @@ const TaskModal = ({ showModal, closeModal, formData, handleInputChange, handleA
                 name="dueDate"
                 value={formData.dueDate}
                 onChange={handleInputChange}
+                disabled={loading}
               />
             </div>
            
@@ -89,13 +93,15 @@ const TaskModal = ({ showModal, closeModal, formData, handleInputChange, handleA
               type="button"
               className="btn add-employeebtn text-white"
               onClick={handleAddTask}
+              disabled={loading}
             >
-              Assign Task
+              {loading? "Assigning" : "Assign"}
             </button>
             <button
               type="button"
               className="btn btn-danger"
               onClick={closeModal}
+              disabled={loading}
             >
               Close
             </button>

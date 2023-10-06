@@ -43,7 +43,7 @@ const AddEmployee = () => {
   ];
 
   const [errors, setErrors] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");  // errors from server side
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -80,12 +80,12 @@ const AddEmployee = () => {
 
     setErrors(newErrors);
 
-    if(newErrors){
-      setLoading(false)
+    if (Object.keys(newErrors).length === 0) {
+      return true; // No validation errors, return true
+    } else {
+      setLoading(false); // Validation errors found, return false
+      return false;
     }
-
-    // Check if there are any validation errors
-    return Object.keys(newErrors).length === 0;
   };
 
   const fetchDesignationId = (selectedDesignation) => {
@@ -102,23 +102,32 @@ const AddEmployee = () => {
   };
 
   const handleSubmit = (e) => {
-    setLoading(true);
     e.preventDefault();
 
-    if (validateForm()) {
-      // Fetch the designation ID based on the selected designation
-      const designationId = fetchDesignationId(employeeData.Designation);
+    setLoading(true);
 
-      // Include the designation ID in the employeeData object
+    if (validateForm()) {
+      const designationId = fetchDesignationId(employeeData.Designation); // Fetch the designation ID based on the selected designation
+
       const updatedEmployeeData = {
-        ...employeeData,
+        ...employeeData, //including the desg id in emp obj
         DesignationId: designationId,
       };
 
       axios
         .post("http://localhost:3001/add-employee", updatedEmployeeData)
         .then((response) => {
-          setErrorMessage(""); // Clear any previous error messages
+          toast.success("Employee Added Successfully!", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+          setErrorMessage("");
           setEmployeeData({
             EmployeeName: "",
             EmployeeId: "",
@@ -132,27 +141,29 @@ const AddEmployee = () => {
             Gender: "",
             DesignationId: null, // Reset the DesignationId
           });
-          setLoading(false);
         })
         .catch((error) => {
-          setLoading(false);
           console.error("Error sending employee data:", error);
           if (error.response.data.message === "Email Already Registered") {
-           
             setErrorMessage("Email Already Registered");
-          }else if (error.response.data.message === "Try Another Employee Pin") {
+          } else if (
+            error.response.data.message === "Try Another Employee Pin"
+          ) {
             setErrorMessage("Try Another Employee Pin");
-          }
-           else {
+          } else {
             console.log(error.response.data.message);
             setErrorMessage("Error Adding Employee");
           }
+        })
+        .finally(() => {
+          setLoading(false); // Setting loading to false after the request is completed
         });
     } else {
       console.error("Form has validation errors");
+      
+      setLoading(false);// Set loading to false if validation fails
     }
   };
-
   return (
     <div className="container mt-5 ">
       <ToastContainer />

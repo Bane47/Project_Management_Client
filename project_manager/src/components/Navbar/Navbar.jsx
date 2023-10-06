@@ -23,9 +23,7 @@ const NavBar = () => {
   const [userdata, setUserData] = useState("");
 
   useEffect(() => {
-    // Check if userEmail exists in session storage
     if (!userEmail) {
-      // Handle the case when userEmail is missing, for example, set userData to an empty object
       setUserData({});
       return;
     }
@@ -44,8 +42,6 @@ const NavBar = () => {
     axios
       .post("http://localhost:3001/logout", { email: userEmail })
       .then((res) => {
-
-  
         localStorage.removeItem("roleId");
         sessionStorage.removeItem("user");
 
@@ -63,8 +59,8 @@ const NavBar = () => {
 
         setTimeout(() => {
           navigate("/login");
-           window.location.reload();
-         }, 1500);
+          window.location.reload();
+        }, 1500);
       })
       .catch((error) => {
         console.error("Error logging out:", error);
@@ -98,8 +94,8 @@ const NavBar = () => {
             aria-controls="basic-navbar-nav"
             variant="light"
             style={{
-              backgroundColor: "white", // Change to your desired background color
-              borderColor: "white", // Change to your desired border color
+              backgroundColor: "white",
+              borderColor: "white",
             }}
           />
         </div>
@@ -132,13 +128,14 @@ const NavBar = () => {
                   {" "}
                   <img
                     src={`http://localhost:3001/images/${userdata.Profile}`}
-                    className="rounded-circle mt-2 me-2 ms-3 "
+                    className="rounded-circle mt-2 me-4 ms-3 "
                     id="avatar"
                     alt="Avatar"
                     width="40"
                     height="40"
                   />
                 </Link>
+
                 <button
                   className="btn btn-link nav-link p-3 text-danger"
                   onClick={handleLogout}

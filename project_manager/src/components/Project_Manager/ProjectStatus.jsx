@@ -27,7 +27,7 @@ const ProjectStatus = () => {
       {projectData.length === 0 ? (
         <p className="ms-4 mt-3">No Projects Available</p>
       ) : (
-        <table className="table table-bordered table-striped ms-3 mt-3 table-report">
+        <table className="table custom-table table-bordered table-striped ms-3 mt-3 table-report">
           <thead>
             <tr>
               <th>Project Title</th>

@@ -15,12 +15,12 @@ const TLAssignTasks = () => {
   const [employeeData, setEmployeeData] = useState([]);
 
   const [formData, setFormData] = useState({
-    projectName: '', // Initialize to an empty string
+    projectName: '', 
     taskName: '',
     taskDescription: '',
     dueDate: '',
-    employeeName: '', // Initialize to an empty string
-    employeeEmail: '', // Initialize to an empty string
+    employeeName: '', 
+    employeeEmail: '',
   });
 
   useEffect(() => {
@@ -57,9 +57,9 @@ const TLAssignTasks = () => {
     // Set the project name, employee name, and email in the formData
     setFormData({
       ...formData,
-      projectName: projectTitle || '', // Ensure it's not null or undefined
-      employeeName: employeeName || '', // Ensure it's not null or undefined
-      employeeEmail: employeeEmail || '', // Ensure it's not null or undefined
+      projectName: projectTitle || '', 
+      employeeName: employeeName || '', 
+      employeeEmail: employeeEmail || '',
     });
   };
 

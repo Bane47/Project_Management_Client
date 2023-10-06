@@ -8,7 +8,7 @@ export const Card = ({ to, icon, title, description }) => {
   return (
     <Link to={to} className="link-no-underline">
       <div className="card text-center border-0 shadow-lg settingcard">
-        <div className="card-body">
+        <div className="card-body" style={{height:"155px"}}>
           <span className="fontawesome-color">
             <FontAwesomeIcon icon={icon} size="2x" className="mb-2" />
           </span>

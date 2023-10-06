@@ -76,12 +76,12 @@ const TLSidebar = () => {
           </NavLink>
         </li>
 
-        <li>
+        {/* <li>
           <NavLink to="/tlassigntasks">
             <FontAwesomeIcon icon={faChartBar} />
             Assign Tasks {renderBadge(projects.length)}
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/taskstatus">
             <FontAwesomeIcon icon={faChartBar} />
@@ -98,7 +98,7 @@ const TLSidebar = () => {
         <li>
           <NavLink to="/currentannouncements">
             <FontAwesomeIcon icon={faHome} />
-            Announcements
+            Updates
             {numAnnouncements > 0 && (
               <span className="badge add-employeebtn ms-2">
                 {numAnnouncements}
@@ -113,7 +113,7 @@ const TLSidebar = () => {
           </NavLink>
         </li>
         {/* Profile Section */}
-      <div className="profile-section">
+      <div className="profile-section d-sm-none d-md-block d-none d-sm-block">
         <div className="border-top mt-auto p-3">
           <Link to="/settings" className="d-flex align-items-center">
             <img

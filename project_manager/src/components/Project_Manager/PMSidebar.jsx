@@ -54,7 +54,7 @@ const PMSidebar = () => {
   },[]);
 
   return (
-    <div className="sidebar bg-light min-vh-100 p-0 p-lg-2">
+    <div className="sidebar bg-light min-vh-100 p-0 p-lg-2 ">
       <ul>
         <li>
           <NavLink to="/dashboard">
@@ -96,7 +96,7 @@ const PMSidebar = () => {
         <li>
           <NavLink to="/currentannouncements">
             <FontAwesomeIcon icon={faHome} />
-            Announcements
+            Updates
             {numAnnouncements > 0 && (
               <span className="badge add-employeebtn ms-2">
                 {numAnnouncements}
@@ -106,7 +106,7 @@ const PMSidebar = () => {
         </li>
       </ul>
       {/* Profile Section */}
-      <div className="profile-section">
+      <div className="profile-section  d-sm-none d-md-block d-none d-sm-block">
         <div className="border-top mt-auto p-3">
           <Link to="/settings" className="d-flex align-items-center">
             <img

@@ -13,10 +13,7 @@ import AboutUs from "./AboutUs";
 const HomePage = () => {
   return (
     <div className="homepage">
-      <header className="header">
-        <h1>Offshore Software Development Company CG-VAK’s TechStack</h1>
-        <p>Your Gateway to Innovation</p>
-      </header>
+     
       <section className="hero ">
         <div className="hero-content text-center">
           <h2>Unlock the Power of Technology</h2>
@@ -30,7 +27,7 @@ const HomePage = () => {
       </section>
       <div className="container mt-5">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-lg-4">
             <h3>Project Management</h3>
             <p className="mt-5">
               Effective project management is the key to successful project
@@ -48,7 +45,7 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="col-md-8">
+          <div className="col-lg-8">
             <Carousel>
               <Carousel.Item>
                 <img
@@ -84,21 +81,21 @@ const HomePage = () => {
       </div>
 
       <section className="features">
-        <div className="feature">
+        <div className="feature mt-4 d-sm-none d-md-block d-none d-sm-block">
           <div className="feature-icon">
             <FontAwesomeIcon icon={faGear} className="big-icon" />
           </div>
           <h4>Innovative Solutions</h4>
           <p>Experience the latest in technology.</p>
         </div>
-        <div className="feature">
+        <div className="feature d-sm-none d-md-block d-none d-sm-block">
           <div className="feature-icon">
             <FontAwesomeIcon icon={faPeopleGroup} className="big-icon" />
           </div>
           <h4>Community Support</h4>
           <p>Join a vibrant community of tech enthusiasts.</p>
         </div>
-        <div className="feature">
+        <div className="feature d-sm-none d-md-block d-none d-sm-block">
           <div className="feature-icon">
             <FontAwesomeIcon icon={faTerminal} className="big-icon" />
           </div>
@@ -106,56 +103,57 @@ const HomePage = () => {
           <p>Learn to code with our user-friendly tutorials.</p>
         </div>
       </section>
+
       <section className="company-cards">
-  <div className="container">
-    <h2 className="text-center">Our Company</h2>
-    <div className="row justify-content-center">
-      <div className="col-md-4">
-        <div className="card company-card card-1">
-          <img
-            src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="Company 1"
-            className="card-img-top w-75"
-          />
-          <div className="card-body">
-            <h5 className="card-title">Company Name 1</h5>
-            <p className="card-text">Description of Company 1</p>
+        <div className="container-md">
+          <h2 className="text-center mb-5">Our Products</h2>
+          <div className="row justify-content-start gy-4">
+            <div className="col-md-6 col-lg-4">
+              <div className="card company-card card-1">
+                <img
+                  src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Company 1"
+                  className="card-img-top company-card-img"
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Company Name 1</h5>
+                  <p className="card-text">Description of Company 1</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4">
+              <div className="card company-card card-2">
+                <img
+                  src="https://images.pexels.com/photos/16129728/pexels-photo-16129728/free-photo-of-man-coding-on-pc.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Company 2"
+                  className="card-img-top company-card-img"
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Company Name 2</h5>
+                  <p className="card-text">Description of Company 2</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4">
+              <div className="card company-card card-3">
+                <img
+                  src="https://images.pexels.com/photos/12899188/pexels-photo-12899188.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Company 3"
+                  className="card-img-top company-card-img"
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Company Name 3</h5>
+                  <p className="card-text">Description of Company 3</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="col-md-4">
-        <div className="card company-card card-2">
-          <img
-            src="https://images.pexels.com/photos/16129728/pexels-photo-16129728/free-photo-of-man-coding-on-pc.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="Company 2"
-            className="card-img-top w-75"
-          />
-          <div className="card-body">
-            <h5 className="card-title">Company Name 2</h5>
-            <p className="card-text">Description of Company 2</p>
-          </div>
-        </div>
-      </div>
-      <div className="col-md-4">
-        <div className="card company-card card-3">
-          <img
-            src="https://images.pexels.com/photos/12899188/pexels-photo-12899188.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="Company 3"
-            className="card-img-top w-75"
-          />
-          <div className="card-body">
-            <h5 className="card-title">Company Name 3</h5>
-            <p className="card-text">Description of Company 3</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-
-
-
+      <footer className="footer text-center mt-5">
+        <p>&copy; 2023 CG-VAK Offshore Software Development Company</p>
+      </footer>
     </div>
   );
 };

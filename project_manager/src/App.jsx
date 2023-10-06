@@ -58,7 +58,7 @@ function App() {
   const CommonLayout = (
     <div className="container-breakpoint overflow-hidden">
       <div className="row" id="side-main">
-        <div className="col-md-2 pe-0">
+        <div className="col-md-3 col-lg-2 ">
           {userRole === "07" && <AdminSidebar />}
 
           {userRole === "01" && <UnitHeadSidebar />}
@@ -69,13 +69,16 @@ function App() {
 
           {["04", "05", "06"].includes(userRole) && <EmployeeSidebar />}
         </div>
-        <div className="col-md-10 p-0">
+        <div className="col-md-9 col-lg-10 ">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
-            <Route path="/currentannouncements" element={<CurrentAnnouncements/>}/>
-            {userRole === "07" && (
+            <Route
+              path="/currentannouncements"
+              element={<CurrentAnnouncements />}
+            />
+            {userRole === "07" && (  //admin
               <>
                 <Route path="/employees" element={<Employees />} />
                 <Route path="/dashboard" element={<AdminDashboard />} />
@@ -85,7 +88,7 @@ function App() {
                 <Route path="/history" element={<AnnouncementHistory />} />
               </>
             )}
-            {userRole === "01" && (
+            {userRole === "01" && (  //unithead
               <>
                 <Route path="/dashboard" element={<UnitHeadDashboard />} />
                 <Route path="/assignproject" element={<AssignProject />} />
@@ -93,7 +96,7 @@ function App() {
                 <Route path="/settings" element={<Settings />} />
               </>
             )}
-            {userRole === "02" && (
+            {userRole === "02" && ( //project_manager
               <>
                 <Route path="/yourprojects" element={<YourProject />} />
                 <Route path="/addproject" element={<AddProject />} />
@@ -103,7 +106,7 @@ function App() {
                 <Route path="/settings" element={<Settings />} />
               </>
             )}
-            {userRole === "03" && (
+            {userRole === "03" && ( //team lead
               <>
                 <Route path="/dashboard" element={<TLDashboard />} />
                 <Route path="/myprojects" element={<MyProjects />} />
@@ -112,10 +115,10 @@ function App() {
                 <Route path="/taskstatus" element={<TaskStatus />} />
                 <Route path="/reportmanager" element={<ReportManager />} />
                 <Route path="/settings" element={<Settings />} />
-                <Route path="/completedtasks" element={<CompletedTasks/>}/>
+                <Route path="/completedtasks" element={<CompletedTasks />} />
               </>
             )}
-            {["04", "05", "06"].includes(userRole) && (
+            {["04", "05", "06"].includes(userRole) && ( //employees
               <>
                 <Route path="/dashboard" element={<EmployeeDashboard />} />
                 <Route path="/tasks" element={<Tasks />} />
@@ -150,7 +153,7 @@ function App() {
             element={<ResetPassword />}
           />
         </Routes>
-        {userRole && CommonLayout}
+        {userRole && CommonLayout} {/*if user role value is there means */}
       </BrowserRouter>
     </ProjectProvider>
   );

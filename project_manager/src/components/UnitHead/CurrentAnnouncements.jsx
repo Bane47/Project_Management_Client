@@ -27,8 +27,8 @@ const CurrentAnnouncements = () => {
       ):(
       <div className="row">
         {receivedMessages.map((message) => (
-          <div key={message._id} className="col-md-4 mb-4">
-            <div className="alert alert-primary" role="alert">
+          <div key={message._id} className="col-md-6 mb-4">
+            <div className="alert alert-primary mx-2" role="alert">
               <p className="mb-0" style={{ fontSize: "18px" }}>
                 {message.message}
               </p>

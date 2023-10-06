@@ -40,11 +40,11 @@ const Tasks = () => {
 
   return (
     <div>
-      <h2 className="ms-5 mt-2 text-center">Tasks List</h2>
+      <h2 className="mt-2 text-center">Tasks List</h2>
       <div className="container table-report mt-3">
         <div className="row">
           <div className="col-md-12">
-            <div className="d-flex justify-content-end">
+            <div className="d-flex justify-content-md-end">
               {showCompletedTasks ? (
                 <button className="btn btn-secondary" onClick={handleShowCurrentTasks}>
                   Current Tasks

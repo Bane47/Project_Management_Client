@@ -1,19 +1,20 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 import TaskModal from "./TaskModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const EmployeesList = ({
-  selectedProject,
   userEmail,
-  selectedEmployee,
-  selectedEmployeeEmail,
   employeeData,
   formData,
   setFormData,
 }) => {
   const [showModal, setShowModal] = useState(false);
+  const [loading,setLoading]=useState(false)
+
+  const navigate=useNavigate()
 
   const openModal = () => {
     setShowModal(true);
@@ -45,6 +46,8 @@ const EmployeesList = ({
     axios
       .post("http://localhost:3001/add-task", taskData)
       .then((res) => {
+
+        setLoading(true)
         toast.success("Task Assigned SuccessFully!", {
           position: "top-right",
           autoClose: 2000,
@@ -56,19 +59,23 @@ const EmployeesList = ({
           theme: "dark",
         });
         setFormData({
-          projectName: formData.ProjectName,
+          projectName: "",
           taskName: "",
           taskDescription: "",
           dueDate: "",
           employeeName: "",
           employeeEmail: "",
         });
+        closeModal();
+        navigate('/taskstatus')
       })
       .catch((error) => {
+        setLoading(false)
         console.error("Error adding task:", error);
+      })
+      .finally(()=>{
+        setLoading(false)
       });
-
-    closeModal();
   };
 
   return (
@@ -98,11 +105,10 @@ const EmployeesList = ({
                 <button
                   onClick={() => {
                     openModal();
-                    // Set the employee name and email in the formData
                     setFormData({
                       ...formData,
-                      employeeName: employee.EmployeeName || "", // Ensure it's not null or undefined
-                      employeeEmail: employee.Email || "", // Ensure it's not null or undefined
+                      employeeName: employee.EmployeeName || "", 
+                      employeeEmail: employee.Email || "",
                     });
                   }}
                   className="btn add-employeebtn text-white"
@@ -121,6 +127,7 @@ const EmployeesList = ({
         formData={formData}
         handleInputChange={handleInputChange}
         handleAddTask={handleAddTask}
+        loading={loading}
       />
     </div>
   );

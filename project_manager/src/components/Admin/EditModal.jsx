@@ -13,7 +13,7 @@ const EditModal = ({ employee, onClose }) => {
   };
 
   const handleSave = () => {
-    // Send a PUT request to update the employee data
+    //PUT request to update the employee data
     axios
       .put(
         `http://localhost:3001/updateEmployee/${editedEmployee.EmployeeId}`,
@@ -21,7 +21,7 @@ const EditModal = ({ employee, onClose }) => {
       )
       .then((response) => {
         console.log("Employee data updated successfully", response.data);
-        onClose(); // Close the modal after successful update
+        onClose(); 
         toast.success("Edited SuccessFully", {
           position: "top-right",
           autoClose: 2000,
@@ -76,8 +76,8 @@ const EditModal = ({ employee, onClose }) => {
             <Form.Label>Domain</Form.Label>
             <Form.Control
               type="text"
-              name="Domain1" // Change this to "Domain1"
-              value={editedEmployee.Domain1} // Change this to "Domain1"
+              name="Domain1" 
+              value={editedEmployee.Domain1} 
               onChange={handleInputChange}
             />
           </Form.Group>
@@ -85,8 +85,8 @@ const EditModal = ({ employee, onClose }) => {
             <Form.Label>SkypeId</Form.Label>
             <Form.Control
               type="text"
-              name="SkypeId" // Change this to "Domain1"
-              value={editedEmployee.SkypeId} // Change this to "Domain1"
+              name="SkypeId"
+              value={editedEmployee.SkypeId}
               onChange={handleInputChange}
             />
           </Form.Group>

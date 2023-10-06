@@ -83,15 +83,24 @@ const UpdateStatus = () => {
 
   const handleSendReport = async () => {
     try {
-      // Send a POST request to send the report
+      toast('Sent Successfully!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
       await axios.post(`http://localhost:3001/sendReport`, {
         taskId: selectedTaskId,
         reportText: reportText,
-        teamLeadEmail: teamLeadEmails[selectedTaskId], // Include TeamLeadEmail based on selected task
+        teamLeadEmail: teamLeadEmails[selectedTaskId], 
         userEmail: userEmail,
+        
       });
 
-      // Close the modal
       closeSendReportModal();
     } catch (err) {
       console.error("Error sending report:", err);
@@ -116,7 +125,7 @@ const UpdateStatus = () => {
       {taskData.length === 0 ? (
         <p className="ms-3 mt-3">No Projects Found</p>
       ) : (
-        <table className="table table-bordered table-report ms-3 mt-3">
+        <table className="table custom-table table-bordered table-report ms-3 mt-3">
           <thead>
             <tr>
               <th>Task Name</th>
@@ -201,7 +210,7 @@ const UpdateStatus = () => {
                 </button>
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn add-employeebtn text-white"
                   onClick={handleSendReport}
                 >
                   Send

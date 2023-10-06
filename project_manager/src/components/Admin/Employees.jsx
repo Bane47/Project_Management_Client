@@ -15,6 +15,7 @@ import Deletemodal from "./DeleteModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const Employees = () => {
   const [empData, setEmpData] = useState([]);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -44,7 +45,7 @@ const Employees = () => {
           <img
             src={`http://localhost:3001/images/${row.values.Profile}`}
             alt={`Profile for ${row.values.EmployeeName}`}
-            style={{ maxWidth: "50px",maxHeight:"40px" }} // Optional: Set a maximum width for the image
+            style={{ maxWidth: "50px", maxHeight: "40px" }} // Optional: Set a maximum width for the image
           />
         ),
       },
@@ -114,7 +115,6 @@ const Employees = () => {
     canNextPage,
     nextPage,
     previousPage,
-    setPageSize,
     setGlobalFilter,
   } = useTable(
     {
@@ -137,6 +137,32 @@ const Employees = () => {
   const handleDelete = (employee) => {
     setEmployeeToDelete(employee);
     setIsDeleteModalOpen(true);
+  };
+
+  const handleEmployeeDeletion = () => {
+    axios
+      .post("http://localhost:3001/deleteEmployee", {
+        employee: employeeToDelete,
+      })
+      .then((response) => {
+        toast.success("Deleted Successfully!", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      })
+      .catch((error) => {
+        console.error("Error deleting employee:", error);
+      })
+      .finally(() => {
+        closeDeleteModal();
+        fetchEmployeeData();
+      });
   };
 
   const closeEditModal = () => {
@@ -164,8 +190,8 @@ const Employees = () => {
         pauseOnHover
         theme="dark"
       />
-      <div className="row mt-4 table-report">
-        <div className="col-12 d-flex align-items-center">
+      <div className="row mt-4 table-report mx-5 w-100">
+        <div className="col-sm-6 p-0">
           <div>
             <div className="search">
               <input
@@ -176,19 +202,19 @@ const Employees = () => {
                 onChange={(e) => setGlobalFilter(e.target.value)}
               />
             </div>
-          </div>
+          </div>{" "}
+        </div>
 
-          <div className="add ms-auto">
-            <Link
-              to="/addemployee"
-              className="btn add-employeebtn text-white mb-3 me-md-2"
-            >
-              Add Employee
-            </Link>
-          </div>
+        <div className="col-sm-6 add text-start text-sm-end p-0 pe-md-5">
+          <Link
+            to="/addemployee"
+            className="btn add-employeebtn text-white mb-3 me-5"
+          >
+            Add Employee
+          </Link>
         </div>
       </div>
-      <div className="table-container">
+      <div className="table-container mx-5 mb-5">
         <table {...getTableProps()} className="custom-table">
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -217,7 +243,7 @@ const Employees = () => {
           </tbody>
         </table>
       </div>
-      <div className="pagination fixed-bottom mb-1 mb-md-5 ms-5">
+      <div className="pagination mb-1 mb-md-5">
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
           {"<<"}
         </button>{" "}
@@ -244,31 +270,7 @@ const Employees = () => {
         <Deletemodal
           show={isDeleteModalOpen}
           onClose={closeDeleteModal}
-          onDelete={() => {
-            axios
-              .post("http://localhost:3001/deleteEmployee", {
-                employee: employeeToDelete,
-              })
-              .then((response) => {
-                toast.success("Deleted Successfully!", {
-                  position: "top-right",
-                  autoClose: 2000,
-                  hideProgressBar: true,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "dark",
-                });
-              })
-              .catch((error) => {
-                console.error("Error deleting employee:", error);
-              })
-              .finally(() => {
-                closeDeleteModal();
-                fetchEmployeeData();
-              });
-          }}
+          onDelete={handleEmployeeDeletion} // Pass the onDelete function here
         />
       )}
     </div>
